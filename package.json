@@ -1,0 +1,16 @@
+{
+  "name": "fistap",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fistap — High-Speed Global Messaging PWA (AI-DOS Omnipotent, Layer 3)",
+  "scripts": {
+    "dev": "pnpm --parallel --filter client --filter server dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "tokens:generate": "node scripts/generate-tokens.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "packageManager": "pnpm@9.15.4"
+}
