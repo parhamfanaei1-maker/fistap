@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* فونت وزیرمتن — design_tokens.json font.family.sans
+   (در استقرار، فایل فونت self-host می‌شود؛ الزام «بدون VPN» = عدم اتکا به CDN خارجی) */
+:root {
+  --color-bg-dark: #0F172A;
+  --color-surface-dark: #1E293B;
+}
+
+html { font-family: 'Vazirmatn', 'Inter', system-ui, sans-serif; }
+body { @apply bg-neutral-50 text-neutral-900 dark:bg-dark-background dark:text-dark-text antialiased; }
+
+/* utility_classes از ui_handoff_prompts.json */
+.text-truncate { @apply overflow-hidden text-ellipsis whitespace-nowrap; }
+.flex-center { @apply flex items-center justify-center; }
+.safe-area { padding-bottom: env(safe-area-inset-bottom); }
