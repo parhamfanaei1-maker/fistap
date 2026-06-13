@@ -1,0 +1,19 @@
+FROM node:20-alpine AS build
+RUN corepack enable
+WORKDIR /repo
+COPY pnpm-workspace.yaml package.json ./
+COPY packages/shared/package.json packages/shared/
+COPY client/package.json client/
+RUN pnpm install --frozen-lockfile=false
+COPY packages/shared packages/shared
+COPY client client
+COPY docs/design_tokens.json docs/design_tokens.json
+COPY scripts scripts
+RUN node scripts/generate-tokens.mjs && pnpm --filter @fistap/client build
+
+FROM node:20-alpine
+RUN corepack enable
+WORKDIR /repo
+COPY --from=build /repo .
+EXPOSE 3000
+CMD ["pnpm", "--filter", "@fistap/client", "start"]

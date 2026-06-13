@@ -1,0 +1,67 @@
+# 🚀 استقرار Production فیستپ — Task 5.3 (لایه ۶)
+# استفاده: docker compose -f infra/docker-compose.prod.yml --env-file .env.production up -d
+# پیش‌نیاز: .env.production با سکرت‌های واقعی (چک‌لیست در docs/deployment_guide.md)
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes: [mongo_data:/data/db]
+    # بدون publish پورت — فقط شبکه داخلی (امنیت)
+    networks: [backend]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 15s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis_data:/data]
+    networks: [backend]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 15s
+      retries: 5
+
+  server:
+    build: { context: .., dockerfile: infra/Dockerfile.server }
+    restart: unless-stopped
+    env_file: [../.env.production]
+    environment:
+      NODE_ENV: production
+      MONGO_URI: mongodb://mongo:27017/fistap
+      REDIS_URL: redis://redis:6379
+    networks: [backend, web]
+    depends_on:
+      mongo: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  client:
+    build: { context: .., dockerfile: infra/Dockerfile.client }
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      # آدرس عمومی — همان دامنه (nginx مسیر /api و /socket.io را به server می‌برد)
+      NEXT_PUBLIC_API_URL: ${PUBLIC_ORIGIN}
+      NEXT_PUBLIC_WS_URL: ${PUBLIC_ORIGIN}
+    networks: [web]
+    depends_on: [server]
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro   # fullchain.pem + privkey.pem
+    networks: [web]
+    depends_on: [client, server]
+
+networks:
+  backend: # mongo/redis فقط اینجا — از بیرون غیرقابل دسترس
+  web:
+
+volumes:
+  mongo_data:
+  redis_data:
