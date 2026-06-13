@@ -1,0 +1,26 @@
+{
+  "project": "Fistap v0.1.0",
+  "generated": "2026-06-12",
+  "generator": "AI-DOS role 21 (Issue Router)",
+  "routing_rules": {
+    "ui_visual": { "specialist": "role-22 UI Fixer", "scope": "client/src/components/**, کلاس‌های Tailwind، RTL، حالت تاریک" },
+    "backend_logic": { "specialist": "role-23 Backend Fixer", "scope": "server/src/modules/**, sockets/**, plugins/**" },
+    "database": { "specialist": "role-24 DB Fixer", "scope": "server/src/models/**, کوئری‌ها، ایندکس‌ها" },
+    "performance": { "specialist": "role-25 Performance Optimizer", "scope": "زمان پاسخ، حجم باندل، کوئری N+1" },
+    "manager_decision": { "specialist": "Manager Gate", "scope": "تغییر محدوده/پذیرش ریسک" }
+  },
+  "issues": [
+    { "id": "ISS-001", "severity": "high", "routed_to": "role-23 Backend Fixer", "secondary": "role-22 UI Fixer", "files_patched": ["packages/shared/src/events.ts", "server/src/sockets/message.handlers.ts", "server/src/modules/messages/message.service.ts", "client/src/components/chat/MessageInput.tsx"], "status": "FIXED", "verified_by": ["reply.forward.test.ts", "regression-E2E"] },
+    { "id": "ISS-002", "severity": "medium", "routed_to": "role-23 Backend Fixer", "secondary": "role-22 UI Fixer", "files_patched": ["packages/shared/src/events.ts", "server/src/modules/messages/message.service.ts", "client/src/components/chat/ForwardModal.tsx", "client/src/components/chat/MessageBubble.tsx", "client/src/components/chat/MessageList.tsx"], "status": "IMPLEMENTED", "verified_by": ["reply.forward.test.ts", "regression-E2E"] },
+    { "id": "ISS-003", "severity": "medium", "routed_to": "manager_decision", "status": "ACCEPTED_FOR_MVP", "backlog": "sharp thumbnail worker" },
+    { "id": "ISS-004", "severity": "medium", "routed_to": "role-23 Backend Fixer", "files_patched": ["server/src/modules/media/media.routes.ts"], "status": "FIXED", "verified_by": ["live-E2E uploader-200/stranger-403"] },
+    { "id": "ISS-005", "severity": "medium", "routed_to": "role-23 Backend Fixer", "files_patched": ["server/src/index.ts"], "status": "FIXED", "verified_by": ["live-E2E no-raw-phone-in-logs"] },
+    { "id": "ISS-006", "severity": "low", "routed_to": "role-23 Backend Fixer", "files_patched": ["server/src/modules/auth/auth.routes.ts"], "status": "FIXED" },
+    { "id": "ISS-007", "severity": "low", "routed_to": "manager_decision", "status": "BACKLOG", "backlog": "httpOnly cookie hardening" },
+    { "id": "ISS-008", "severity": "info", "routed_to": "role-23 Backend Fixer", "files_patched": ["server/src/sockets/index.ts"], "status": "FIXED" },
+    { "id": "ISS-009", "severity": "info", "routed_to": "role-24 DB Fixer", "files_patched": ["server/src/modules/users/users.routes.ts"], "status": "FIXED", "verified_by": ["duplicate-key 11000 → 409"] }
+  ],
+  "merge_log": {
+    "merger_role_26": "تک-workspace؛ همه پچ‌ها به صورت سری روی main اعمال شدند — تداخلی رخ نداد. پس از هر پچ: typecheck + unit + رگرسیون E2E (قانون LL-002)."
+  }
+}

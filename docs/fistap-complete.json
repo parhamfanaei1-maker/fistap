@@ -1,0 +1,936 @@
+{
+  "project": "Fistap Messenger",
+  "version": "1.0.0",
+  "description": "Complete Fistap Design Package - All files consolidated for upload compatibility",
+  "handoff": {
+    "project": "Fistap Messenger",
+    "layer": "Design Handoff (Stage 4)",
+    "version": "1.0",
+    "date": "2026-06-10",
+    "agent": "Agent 8 - Handoff Specialist",
+    "note": "هر کامپوننت دارای ID یکتا، کلاس‌های Tailwind، رنگ‌های دقیق و توضیح رفتار است.",
+    "components": [
+      {
+        "id": "UI-COMP-01",
+        "name": "App Shell (Desktop Layout)",
+        "description": "ساختار اصلی صفحه دسکتاپ: Sidebar + Chat List + Chat Window",
+        "tailwind_classes": "flex h-screen w-full bg-neutral-50 dark:bg-slate-900 overflow-hidden font-sans text-slate-800 dark:text-slate-100",
+        "dimensions": {
+          "width": "100vw",
+          "height": "100vh"
+        },
+        "children": [
+          "UI-COMP-02",
+          "UI-COMP-03",
+          "UI-COMP-04"
+        ]
+      },
+      {
+        "id": "UI-COMP-02",
+        "name": "Sidebar Navigation",
+        "description": "منوی سمت راست در دسکتاپ (RTL) — عرض ۲۸۰ پیکسل",
+        "tailwind_classes": "w-[280px] h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 flex flex-col z-20 hidden md:flex",
+        "padding": "1rem",
+        "items": [
+          {
+            "id": "UI-COMP-02-A",
+            "name": "Sidebar Nav Item",
+            "tailwind": "flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-slate-800 cursor-pointer transition-all duration-150",
+            "active_state": "bg-blue-50 text-blue-600 font-semibold dark:bg-blue-900/20"
+          }
+        ]
+      },
+      {
+        "id": "UI-COMP-03",
+        "name": "Chat List Panel",
+        "description": "لیست چت‌ها بین سایدبار و پنجره چت",
+        "tailwind_classes": "w-[360px] h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 flex flex-col z-10 hidden md:flex",
+        "children": [
+          "UI-COMP-05",
+          "UI-COMP-06"
+        ]
+      },
+      {
+        "id": "UI-COMP-04",
+        "name": "Chat Window (Active)",
+        "description": "پنجره اصلی چت که پیام‌ها را نمایش می‌دهد",
+        "tailwind_classes": "flex-1 h-full bg-neutral-100 dark:bg-slate-950 flex flex-col relative",
+        "children": [
+          "UI-COMP-07",
+          "UI-COMP-08",
+          "UI-COMP-09"
+        ]
+      },
+      {
+        "id": "UI-COMP-05",
+        "name": "Chat List Header & Search",
+        "description": "عنوان لیست چت و فیلد جستجو",
+        "tailwind_classes": "p-4 border-b border-slate-100 dark:border-slate-800",
+        "search_input": {
+          "tailwind": "w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-400"
+        }
+      },
+      {
+        "id": "UI-COMP-06",
+        "name": "Chat List Item",
+        "description": "آیتم تک چت در لیست",
+        "tailwind_classes": "flex items-center gap-3 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors border-b border-slate-50 dark:border-slate-800/50",
+        "active_state": "bg-blue-50 dark:bg-blue-900/20 border-r-2 border-r-blue-600",
+        "avatar": "w-12 h-12 rounded-full object-cover",
+        "content": {
+          "name": "text-base font-semibold text-slate-800 dark:text-slate-100 truncate",
+          "preview": "text-sm text-slate-500 truncate mt-0.5"
+        },
+        "meta": {
+          "time": "text-xs text-slate-400 dark:text-slate-500 mb-1",
+          "badge": "bg-blue-600 text-white text-xs font-bold min-w-[20px] h-5 rounded-full flex items-center justify-center px-1.5"
+        }
+      },
+      {
+        "id": "UI-COMP-07",
+        "name": "Chat Header",
+        "description": "هدر بالای پنجره چت با اطلاعات طرف مقابل",
+        "tailwind_classes": "h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-4 z-10",
+        "elements": {
+          "avatar": "w-10 h-10 rounded-full mr-3",
+          "name": "text-base font-bold text-slate-800 dark:text-slate-100",
+          "status": "text-xs text-emerald-500 font-medium"
+        }
+      },
+      {
+        "id": "UI-COMP-08",
+        "name": "Message List Container",
+        "description": "ناحیه اسکرول‌خور پیام‌ها",
+        "tailwind_classes": "flex-1 overflow-y-auto p-4 space-y-3 scroll-smooth",
+        "children": [
+          "UI-COMP-10",
+          "UI-COMP-11",
+          "UI-COMP-12"
+        ]
+      },
+      {
+        "id": "UI-COMP-09",
+        "name": "Message Input Area",
+        "description": "نوار پایین برای تایپ و ارسال پیام",
+        "tailwind_classes": "bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-3 flex items-end gap-2",
+        "textarea": {
+          "tailwind": "flex-1 max-h-32 bg-slate-100 dark:bg-slate-800 rounded-lg px-4 py-2.5 text-base focus:outline-none resize-none placeholder-slate-400 dark:text-slate-100"
+        },
+        "buttons": {
+          "attach": "text-slate-400 hover:text-blue-600 cursor-pointer p-1",
+          "send": "text-white bg-blue-600 rounded-full p-1.5 hover:bg-blue-700 transition-colors cursor-pointer"
+        }
+      },
+      {
+        "id": "UI-COMP-10",
+        "name": "Message Bubble",
+        "description": "حباب تکی پیام",
+        "variants": [
+          {
+            "type": "Sent",
+            "tailwind_classes": "bg-blue-600 text-white rounded-2xl rounded-br-sm px-4 py-2 max-w-[70%] self-end ml-4 shadow-sm",
+            "text_color": "text-white",
+            "meta_color": "text-blue-200"
+          },
+          {
+            "type": "Received",
+            "tailwind_classes": "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-2xl rounded-bl-sm px-4 py-2 max-w-[70%] self-start mr-4 shadow-sm",
+            "text_color": "text-slate-800 dark:text-slate-100",
+            "meta_color": "text-slate-400"
+          }
+        ],
+        "meta_row": {
+          "tailwind": "flex items-center justify-end gap-1 mt-1 select-none",
+          "time": "text-[10px] opacity-70"
+        }
+      },
+      {
+        "id": "UI-COMP-11",
+        "name": "Date Divider",
+        "description": "خط جداکننده تاریخ‌ها (امروز، دیروز)",
+        "tailwind_classes": "flex items-center justify-center my-4",
+        "badge": "bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-300 text-xs font-medium px-3 py-1 rounded-full"
+      },
+      {
+        "id": "UI-COMP-12",
+        "name": "Typing Indicator",
+        "description": "انیمیشن سه نقطه وقتی طرف مقابل تایپ می‌کند",
+        "tailwind_classes": "bg-white dark:bg-slate-800 rounded-2xl rounded-bl-sm px-4 py-3 self-start mr-4 shadow-sm flex items-center gap-1",
+        "dots": {
+          "tailwind": "w-2 h-2 bg-slate-400 rounded-full animate-bounce",
+          "animation_delay": [
+            "0ms",
+            "150ms",
+            "300ms"
+          ]
+        }
+      },
+      {
+        "id": "UI-COMP-13",
+        "name": "Reply Bar",
+        "description": "نوار پاسخ بالای Input Area",
+        "tailwind_classes": "mx-3 mb-2 bg-slate-50 dark:bg-slate-800 border-l-4 border-blue-500 rounded-r-lg p-2 flex items-center gap-2",
+        "sender": "text-blue-600 text-xs font-bold",
+        "preview": "text-slate-500 text-xs truncate flex-1",
+        "close": "text-slate-400 hover:text-slate-600 cursor-pointer p-1"
+      },
+      {
+        "id": "UI-COMP-14",
+        "name": "Primary Button",
+        "description": "دکمه اصلی فراخوان (ادامه، ورود، ارسال)",
+        "tailwind_classes": "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+      },
+      {
+        "id": "UI-COMP-15",
+        "name": "OTP Input Field",
+        "description": "خانه‌های ورودی کد تایید",
+        "tailwind_classes": "w-12 h-12 text-center text-xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all",
+        "filled_state": "border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-600"
+      },
+      {
+        "id": "UI-COMP-16",
+        "name": "Floating Action Button (FAB)",
+        "description": "دکمه شناور شروع چت جدید در موبایل",
+        "tailwind_classes": "fixed bottom-20 left-4 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:shadow-blue-500/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center z-50 md:hidden"
+      },
+      {
+        "id": "UI-COMP-17",
+        "name": "Bottom Navigation (Mobile)",
+        "description": "نوار پایین اپ در موبایل — ۵ آیتم",
+        "tailwind_classes": "h-14 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center justify-around fixed bottom-0 w-full z-40 safe-area-pb",
+        "item": {
+          "tailwind": "flex flex-col items-center gap-0.5 p-2 text-slate-400 hover:text-blue-600 active:text-blue-700 transition-colors",
+          "active": "text-blue-600"
+        }
+      },
+      {
+        "id": "UI-COMP-18",
+        "name": "Toggle Switch",
+        "description": "سوییچ فعال/غیرفعال",
+        "tailwind_classes": "relative w-11 h-6 bg-slate-200 dark:bg-slate-700 rounded-full cursor-pointer transition-colors duration-200",
+        "checked": "bg-blue-600",
+        "thumb": "absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200",
+        "thumb_checked": "translate-x-5"
+      },
+      {
+        "id": "UI-COMP-19",
+        "name": "Profile Avatar with Status",
+        "description": "عکس پروفایل با نشانگر وضعیت آنلاین",
+        "tailwind_classes": "relative w-12 h-12",
+        "image": "w-full h-full rounded-full object-cover border-2 border-white dark:border-slate-900",
+        "status_dot": "absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-slate-900 rounded-full"
+      },
+      {
+        "id": "UI-COMP-20",
+        "name": "Modal Overlay",
+        "description": "لایه تاریک پشت مودال",
+        "tailwind_classes": "fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      },
+      {
+        "id": "UI-COMP-21",
+        "name": "Modal Content",
+        "description": "بدنه مودال",
+        "tailwind_classes": "bg-white dark:bg-slate-800 rounded-2xl w-full max-w-md shadow-xl overflow-hidden animate-modal-in",
+        "header": "p-4 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between"
+      },
+      {
+        "id": "UI-COMP-22",
+        "name": "Toast Notification",
+        "description": "اعلان کوتاه مدت بالا صفحه",
+        "tailwind_classes": "fixed top-4 left-1/2 -translate-x-1/2 bg-slate-800 dark:bg-slate-100 text-white dark:text-slate-900 px-4 py-2 rounded-full shadow-lg text-sm font-medium z-[60]"
+      }
+    ],
+    "utility_classes": {
+      "text_truncate": "truncate",
+      "flex_center": "flex items-center justify-center",
+      "safe_area": "pb-[env(safe-area-inset-bottom)]"
+    }
+  },
+  "design_tokens": {
+    "project": "Fistap Messenger",
+    "version": "1.0.0",
+    "description": "Design Tokens for Fistap Messenger - Generated by Agent 9",
+    "tokens": {
+      "colors": {
+        "brand": {
+          "blue": {
+            "50": {
+              "value": "#EFF6FF",
+              "type": "color"
+            },
+            "100": {
+              "value": "#DBEAFE",
+              "type": "color"
+            },
+            "200": {
+              "value": "#BFDBFE",
+              "type": "color"
+            },
+            "300": {
+              "value": "#93C5FD",
+              "type": "color"
+            },
+            "400": {
+              "value": "#60A5FA",
+              "type": "color"
+            },
+            "500": {
+              "value": "#3B82F6",
+              "type": "color"
+            },
+            "600": {
+              "value": "#2563EB",
+              "type": "color"
+            },
+            "700": {
+              "value": "#1D4ED8",
+              "type": "color"
+            },
+            "800": {
+              "value": "#1E40AF",
+              "type": "color"
+            },
+            "900": {
+              "value": "#1E3A8A",
+              "type": "color"
+            }
+          },
+          "teal": {
+            "50": {
+              "value": "#F0FDFA",
+              "type": "color"
+            },
+            "100": {
+              "value": "#CCFBF1",
+              "type": "color"
+            },
+            "400": {
+              "value": "#2DD4BF",
+              "type": "color"
+            },
+            "500": {
+              "value": "#14B8A6",
+              "type": "color"
+            },
+            "600": {
+              "value": "#0D9488",
+              "type": "color"
+            }
+          },
+          "cyan": {
+            "400": {
+              "value": "#22D3EE",
+              "type": "color"
+            },
+            "500": {
+              "value": "#06B6D4",
+              "type": "color"
+            }
+          }
+        },
+        "neutral": {
+          "50": {
+            "value": "#F8FAFC",
+            "type": "color"
+          },
+          "100": {
+            "value": "#F1F5F9",
+            "type": "color"
+          },
+          "200": {
+            "value": "#E2E8F0",
+            "type": "color"
+          },
+          "300": {
+            "value": "#CBD5E1",
+            "type": "color"
+          },
+          "400": {
+            "value": "#94A3B8",
+            "type": "color"
+          },
+          "500": {
+            "value": "#64748B",
+            "type": "color"
+          },
+          "600": {
+            "value": "#475569",
+            "type": "color"
+          },
+          "700": {
+            "value": "#334155",
+            "type": "color"
+          },
+          "800": {
+            "value": "#1E293B",
+            "type": "color"
+          },
+          "900": {
+            "value": "#0F172A",
+            "type": "color"
+          },
+          "950": {
+            "value": "#020617",
+            "type": "color"
+          }
+        },
+        "semantic": {
+          "success": {
+            "50": {
+              "value": "#ECFDF5",
+              "type": "color"
+            },
+            "500": {
+              "value": "#10B981",
+              "type": "color"
+            },
+            "600": {
+              "value": "#059669",
+              "type": "color"
+            }
+          },
+          "warning": {
+            "50": {
+              "value": "#FFFBEB",
+              "type": "color"
+            },
+            "500": {
+              "value": "#F59E0B",
+              "type": "color"
+            },
+            "600": {
+              "value": "#D97706",
+              "type": "color"
+            }
+          },
+          "error": {
+            "50": {
+              "value": "#FEF2F2",
+              "type": "color"
+            },
+            "500": {
+              "value": "#EF4444",
+              "type": "color"
+            },
+            "600": {
+              "value": "#DC2626",
+              "type": "color"
+            }
+          },
+          "info": {
+            "500": {
+              "value": "#3B82F6",
+              "type": "color"
+            }
+          }
+        },
+        "bubble": {
+          "sent": {
+            "value": "#2563EB",
+            "type": "color"
+          },
+          "sentText": {
+            "value": "#FFFFFF",
+            "type": "color"
+          },
+          "received": {
+            "value": "#F1F5F9",
+            "type": "color"
+          },
+          "receivedText": {
+            "value": "#1E293B",
+            "type": "color"
+          },
+          "time": {
+            "value": "#64748B",
+            "type": "color"
+          },
+          "timeSent": {
+            "value": "#BFDBFE",
+            "type": "color"
+          }
+        }
+      },
+      "darkMode": {
+        "background": {
+          "value": "#0F172A",
+          "type": "color"
+        },
+        "surface": {
+          "value": "#1E293B",
+          "type": "color"
+        },
+        "surfaceElevated": {
+          "value": "#334155",
+          "type": "color"
+        },
+        "border": {
+          "value": "#334155",
+          "type": "color"
+        },
+        "text": {
+          "value": "#F1F5F9",
+          "type": "color"
+        },
+        "textSecondary": {
+          "value": "#94A3B8",
+          "type": "color"
+        },
+        "textMuted": {
+          "value": "#64748B",
+          "type": "color"
+        },
+        "bubble": {
+          "sent": {
+            "value": "#1E40AF",
+            "type": "color"
+          },
+          "received": {
+            "value": "#1E293B",
+            "type": "color"
+          }
+        }
+      },
+      "font": {
+        "family": {
+          "sans": {
+            "value": "'Vazirmatn', 'Inter', system-ui, sans-serif",
+            "type": "fontFamily"
+          },
+          "mono": {
+            "value": "'JetBrains Mono', monospace",
+            "type": "fontFamily"
+          }
+        },
+        "size": {
+          "caption": {
+            "value": "0.6875rem",
+            "px": "11px",
+            "type": "dimension"
+          },
+          "xs": {
+            "value": "0.75rem",
+            "px": "12px",
+            "type": "dimension"
+          },
+          "sm": {
+            "value": "0.875rem",
+            "px": "14px",
+            "type": "dimension"
+          },
+          "base": {
+            "value": "1rem",
+            "px": "16px",
+            "type": "dimension"
+          },
+          "lg": {
+            "value": "1.125rem",
+            "px": "18px",
+            "type": "dimension"
+          },
+          "xl": {
+            "value": "1.25rem",
+            "px": "20px",
+            "type": "dimension"
+          },
+          "2xl": {
+            "value": "1.5rem",
+            "px": "24px",
+            "type": "dimension"
+          },
+          "3xl": {
+            "value": "2rem",
+            "px": "32px",
+            "type": "dimension"
+          },
+          "4xl": {
+            "value": "2.5rem",
+            "px": "40px",
+            "type": "dimension"
+          }
+        },
+        "weight": {
+          "normal": {
+            "value": 400,
+            "type": "fontWeight"
+          },
+          "medium": {
+            "value": 500,
+            "type": "fontWeight"
+          },
+          "semibold": {
+            "value": 600,
+            "type": "fontWeight"
+          },
+          "bold": {
+            "value": 700,
+            "type": "fontWeight"
+          },
+          "black": {
+            "value": 900,
+            "type": "fontWeight"
+          }
+        },
+        "lineHeight": {
+          "none": {
+            "value": 1,
+            "type": "lineHeight"
+          },
+          "tight": {
+            "value": 1.2,
+            "type": "lineHeight"
+          },
+          "snug": {
+            "value": 1.3,
+            "type": "lineHeight"
+          },
+          "normal": {
+            "value": 1.4,
+            "type": "lineHeight"
+          },
+          "relaxed": {
+            "value": 1.5,
+            "type": "lineHeight"
+          }
+        }
+      },
+      "spacing": {
+        "1": {
+          "value": "0.25rem",
+          "px": "4px",
+          "type": "dimension"
+        },
+        "2": {
+          "value": "0.5rem",
+          "px": "8px",
+          "type": "dimension"
+        },
+        "3": {
+          "value": "0.75rem",
+          "px": "12px",
+          "type": "dimension"
+        },
+        "4": {
+          "value": "1rem",
+          "px": "16px",
+          "type": "dimension"
+        },
+        "5": {
+          "value": "1.25rem",
+          "px": "20px",
+          "type": "dimension"
+        },
+        "6": {
+          "value": "1.5rem",
+          "px": "24px",
+          "type": "dimension"
+        },
+        "8": {
+          "value": "2rem",
+          "px": "32px",
+          "type": "dimension"
+        },
+        "10": {
+          "value": "2.5rem",
+          "px": "40px",
+          "type": "dimension"
+        },
+        "12": {
+          "value": "3rem",
+          "px": "48px",
+          "type": "dimension"
+        },
+        "14": {
+          "value": "3.5rem",
+          "px": "56px",
+          "type": "dimension"
+        },
+        "16": {
+          "value": "4rem",
+          "px": "64px",
+          "type": "dimension"
+        }
+      },
+      "radius": {
+        "none": {
+          "value": "0px",
+          "type": "dimension"
+        },
+        "sm": {
+          "value": "0.25rem",
+          "px": "4px",
+          "type": "dimension"
+        },
+        "md": {
+          "value": "0.5rem",
+          "px": "8px",
+          "type": "dimension"
+        },
+        "lg": {
+          "value": "0.75rem",
+          "px": "12px",
+          "type": "dimension"
+        },
+        "xl": {
+          "value": "1rem",
+          "px": "16px",
+          "type": "dimension"
+        },
+        "2xl": {
+          "value": "1.5rem",
+          "px": "24px",
+          "type": "dimension"
+        },
+        "full": {
+          "value": "9999px",
+          "type": "dimension"
+        },
+        "bubble": {
+          "value": "1.5rem 1.5rem 0.25rem 1.5rem",
+          "type": "dimension"
+        }
+      },
+      "shadow": {
+        "xs": {
+          "value": "0 1px 2px rgba(0,0,0,0.05)",
+          "type": "shadow"
+        },
+        "sm": {
+          "value": "0 1px 3px rgba(0,0,0,0.1)",
+          "type": "shadow"
+        },
+        "md": {
+          "value": "0 4px 6px rgba(0,0,0,0.07)",
+          "type": "shadow"
+        },
+        "lg": {
+          "value": "0 10px 15px rgba(0,0,0,0.1)",
+          "type": "shadow"
+        },
+        "xl": {
+          "value": "0 20px 25px rgba(0,0,0,0.1)",
+          "type": "shadow"
+        },
+        "glow": {
+          "value": "0 0 15px rgba(6,182,212,0.3), 0 0 30px rgba(6,182,212,0.15)",
+          "type": "shadow"
+        }
+      },
+      "animation": {
+        "duration": {
+          "fast": {
+            "value": "150ms",
+            "type": "duration"
+          },
+          "normal": {
+            "value": "200ms",
+            "type": "duration"
+          },
+          "slow": {
+            "value": "300ms",
+            "type": "duration"
+          },
+          "loop": {
+            "value": "1200ms",
+            "type": "duration"
+          }
+        },
+        "easing": {
+          "default": {
+            "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "type": "cubicBezier"
+          }
+        },
+        "keyframes": {
+          "typing": {
+            "0%": {
+              "transform": "translateY(0)"
+            },
+            "50%": {
+              "transform": "translateY(-4px)"
+            },
+            "100%": {
+              "transform": "translateY(0)"
+            }
+          },
+          "pulse": {
+            "0%, 100%": {
+              "opacity": "1",
+              "transform": "scale(1)"
+            },
+            "50%": {
+              "opacity": "0.5",
+              "transform": "scale(1.2)"
+            }
+          }
+        }
+      }
+    }
+  },
+  "markdown_files": {
+    "user_flow": "# 🔄 User Flow — Fistap Messenger\n\n> **نسخه:** 1.0 | **لایه:** ۲ (UX Design) | **تاریخ:** ۲۰۲۶-۰۶-۱۰\n\n---\n\n## فهرست فلوها\n\n| شناسه | نام فلو | صفحات مرتبط | اولویت |\n|---|---|---|---|\n| UF-01 | ورود و احراز هویت | Welcome → Verify → Setup | 🔴 حیاتی |\n| UF-02 | پیام‌رسانی اصلی | Dashboard → Chat → Send/Receive | 🔴 حیاتی |\n| UF-03 | تنظیمات و پروفایل | Settings → Profile → Privacy | 🔴 حیاتی |\n| UF-04 | مدیریت مخاطبین | Contacts → Sync → Invite | 🔴 حیاتی |\n| UF-05 | جستجو | Search → Results → Profile | 🟡 مهم |\n| UF-06 | مدیریت گروه | Create Group → Add Members → Settings | 🟡 مهم |\n| UF-07 | مدیریت کانال | Create Channel → Publish → Settings | 🟡 مهم |\n\n---\n\n## 🔵 UF-01: ورود و احراز هویت (Auth Flow)\n\n### سناریوی اصلی: ورود کاربر جدید\n\n```\n┌─────────────────────────────────────────────────────────────┐\n│                    START: کاربر اپ را باز می‌کند              │\n└─────────────────────────────────────────────────────────────┘\n                              │\n                              ▼\n              ┌───────────────────────────────┐\n              │   /auth/welcome               │\n              │   • لوگو Fistap               │\n              │   • عنوان: \"به فیستاپ خوش آمدید\"│\n              │   • Input: شماره تلفن          │\n              │   • Dropdown: پیش‌شماره کشور   │\n              │   • دکمه: \"ادامه\"              │\n              │   • لینک: \"قوانین و مقررات\"     │\n              └───────────────────────────────┘\n                              │\n                              ▼\n              ┌───────────────────────────────┐\n              │   [Validation]                │\n              │   • آیا شماره معتبر است؟       │\n              └───────────────────────────────┘\n                    │                  │\n               ❌ No │             ✅ Yes │\n                    ▼                  ▼\n        ┌──────────────────┐  ┌───────────────────────────────┐\n        │ نمایش خطا:       │  │   /auth/verify                │\n        │ \"شماره نامعتبر\"  │  │   • عنوان: \"کد تأیید\"          │\n        │ بازگشت به Welcome │  │   • نمایش شماره وارد شده       │\n        └──────────────────┘  │   • لینک: \"تغییر شماره\"        │\n                              │   • Input: ۵ خانه‌ای OTP       │\n                              │   • تایمر: ۱۲۰ ثانیه           │\n                              │   • دکمه: \"ارسال مجدد کد\"      │\n                              │   • دکمه: \"تأیید و ورود\"       │\n                              └───────────────────────────────┘\n                                              │\n                                              ▼\n                              ┌───────────────────────────────┐\n                              │   [Validation]                │\n                              │   • آیا OTP صحیح است؟          │\n                              └───────────────────────────────┘\n                                    │                  │\n                               ❌ No │             ✅ Yes │\n                                    ▼                  ▼\n                        ┌──────────────────┐  ┌───────────────────────────────┐\n                        │ نمایش خطا:       │  │   [Check: کاربر ثبت‌نام شده؟]   │\n                        │ \"کد اشتباه\"      │  └───────────────────────────────┘\n                        │ اجازه تلاش مجدد   │            │              │\n                        │ (حداکثر ۵ بار)    │       ✅ Yes │         ❌ No │\n                        └──────────────────┘            ▼              ▼\n                                                  ┌────────────┐  ┌───────────────────────────────┐\n                                                  │ Redirect → │  │   /auth/setup                 │\n                                                  │ Dashboard  │  │   • عنوان: \"تنظیم پروفایل\"     │\n                                                  └────────────┘  │   • Upload: عکس پروفایل      │\n                                                                  │   • Input: نام نمایشی          │\n                                                                  │   • Input: @username          │\n                                                                  │   • Validation: یکتایی نام کاربری│\n                                                                  │   • دکمه: \"ورود به فیستاپ\"     │\n                                                                  └───────────────────────────────┘\n                                                                                  │\n                                                                                  ▼\n                                                                  ┌───────────────────────────────┐\n                                                                  │   [Validation]                │\n                                                                  │   • آیا فیلدها پر شده؟         │\n                                                                  │   • آیا username یکتا است؟     │\n                                                                  └───────────────────────────────┘\n                                                                          │                  │\n                                                                     ❌ No │             ✅ Yes │\n                                                                          ▼                  ▼\n                                                            ┌──────────────────┐  ┌───────────────────────────────┐\n                                                            │ نمایش خطای فیلد │  │   [Create User Session]       │\n                                                            │ بازگشت به Setup │  │   • ایجاد JWT Token           │\n                                                            └──────────────────┘  │   • ذخیره در LocalStorage     │\n                                                                                  │   • Sync Contacts (اختیاری)    │\n                                                                                  └───────────────────────────────┘\n                                                                                                  │\n                                                                                                  ▼\n                                                                                  ┌───────────────────────────────┐\n                                                                                  │   /app/dashboard              │\n                                                                                  │   (صفحه اصلی پیام‌رسان)       │\n                                                                                  └───────────────────────────────┘\n```\n\n### سناریوی فرعی: ورود کاربر قبلی (Returning User)\n\n```\nSTART: کاربر اپ را باز می‌کند\n    │\n    ▼\n[Check: آیا JWT Token موجود است؟]\n    │                  │\n✅ Yes │             ❌ No │\n    ▼                  ▼\n[Validate Token]  → UF-01 (فلوی ورود جدید)\n    │\n    ▼\n✅ Valid ──→ Redirect → /app/dashboard\n❌ Invalid ──→ Clear Token → UF-01\n```\n\n### سناریوی فرعی: ارسال مجدد OTP\n\n```\n/auth/verify: تایمر تمام شده\n    │\n    ▼\nکاربر روی \"ارسال مجدد\" کلیک می‌کند\n    │\n    ▼\n[Rate Limit Check: حداکثر ۳ بار در ساعت]\n    │                  │\n✅ OK  │            ❌ Limit │\n    ▼                  ▼\nارسال SMS جدید    پیام: \"لطفاً بعداً تلاش کنید\"\nتایمر ریست → ۱۲۰ ثانیه\n```\n\n---\n\n## 🔵 UF-02: پیام‌رسانی اصلی (Core Messaging Flow)\n\n### سناریوی اصلی: ارسال و دریافت پیام\n\n```\n┌─────────────────────────────────────────────────────────────┐\n│                    START: کاربر در Dashboard است             │\n└─────────────────────────────────────────────────────────────┘\n                              │\n                              ▼\n              ┌───────────────────────────────────────────────────────┐\n              │   /app/dashboard (Main Layout)                        │\n              │                                                       │\n              │   ┌─────────────┐    ┌─────────────────────────────┐  │\n              │   │  Sidebar    │    │     Chat Window             │  │\n              │   │             │    │                             │  │\n              │   │ • Search    │    │   حالت خالی:                │  │\n              │   │ • Chat List │    │   \"یک گفتگو را انتخاب کنید\"  │  │\n              │   │ • Settings  │    │                             │  │\n              │   │             │    │   حالت فعال:                │  │\n              │   │             │    │   • Header: نام + وضعیت     │  │\n              │   │             │    │   • Message List            │  │\n              │   │             │    │   • Input Area              │  │\n              │   │             │    │                             │  │\n              │   └─────────────┘    └─────────────────────────────┘  │\n              └───────────────────────────────────────────────────────┘\n                              │\n                    ┌─────────┴─────────┐\n                    ▼                   ▼\n        ┌───────────────────┐  ┌───────────────────┐\n        │ انتخاب/جستجوی چت   │  │ شروع چت جدید     │\n        │ از لیست            │  │ (New Chat)        │\n        └───────────────────┘  └───────────────────┘\n                    │                   │\n                    └─────────┬─────────┘\n                              ▼\n              ┌───────────────────────────────────────────────────────┐\n              │   Chat Window Active                                  │\n              │                                                       │\n              │   ┌─────────────────────────────────────────────────┐ │\n              │   │ Header:                                         │ │\n              │   │ [Avatar] [نام] [وضعیت: آنلاین/آفلاین/تایپینگ]  │ │\n              │   │ [📌 پین شده] [⋮ منو]                           │ │\n              │   └─────────────────────────────────────────────────┘ │\n              │                                                       │\n              │   ┌─────────────────────────────────────────────────┐ │\n              │   │ Message List (Scrollable)                       │ │\n              │   │                                                 │ │\n              │   │ ┌───────┐                                      │ │\n              │   │ │ پیام  │ ← پیام دریافتی (سمت چپ)              │ │\n              │   │ │  دیگر │   • نام فرستنده (گروه)               │ │\n              │   │ └───────┘   • زمان                              │ │\n              │   │             • وضعیت خوانده شدن                 │ │\n              │   │                                                 │ │\n              │   │         ┌───────┐                               │ │\n              │   │         │ پیام  │ → پیام ارسالی (سمت راست)      │ │\n              │   │         │   من  │   • زمان                      │ │\n              │   │         └───────┘   • تیک خوانده شدن           │ │\n              │   │                                                 │ │\n              │   │ ┌─────────────────────────────────────────────┐ │\n              │   │ │ 📌 پیام پین شده: \"جلسه فردا ساعت ۱۰\"       │ │\n              │   │ └─────────────────────────────────────────────┘ │\n              │   └─────────────────────────────────────────────────┘ │\n              │                                                       │\n              │   ┌─────────────────────────────────────────────────┐ │\n              │   │ Input Area                                      │ │\n              │   │                                                 │ │\n              │   │ [📎] [📷] [🎤]  [ تایپ کنید... ]  [😊] [➤]   │ │\n              │   │                                                 │ │\n              │   └─────────────────────────────────────────────────┘ │\n              └───────────────────────────────────────────────────────┘\n                              │\n                    ┌─────────┴─────────┐\n                    ▼                   ▼\n        ┌───────────────────┐  ┌───────────────────┐\n        │ پیام متنی          │  │ پیام رسانه‌ای      │\n        │ (تایپ + ارسال)     │  │ (عکس/ویدیو/فایل)  │\n        └───────────────────┘  └───────────────────┘\n                    │                   │\n                    └─────────┬─────────┘\n                              ▼\n              ┌───────────────────────────────────────────────────────┐\n              │   [Send Message]                                      │\n              │                                                       │\n              │   1. نمایش فوری در Chat Window (Optimistic Update)   │\n              │   2. ارسال به Socket.io Server                        │\n              │   3. وضعیت: ⏳ (Sending) → ✓ (Sent)                   │\n              │                                                       │\n              │   [Server Processing]                                 │\n              │   • ذخیره در MongoDB                                  │\n              │   • ارسال به گیرنده (اگر آنلاین)                      │\n              │   • Push Notification (اگر آفلاین)                    │\n              │                                                       │\n              │   [Receive Message]                                   │\n              │   • دریافت از Socket.io                               │\n              │   • نمایش در Chat Window                              │\n              │   • وضعیت: ✓✓ (Delivered) → ✓✓ آبی (Read)            │\n              │   • پخش صدای نوتیفیکیشن                               │\n              └───────────────────────────────────────────────────────┘\n```\n\n### سناریوی فرعی: Reply به پیام\n\n```\nکاربر روی پیام Long-Press می‌کند (موبایل) / Right-Click (دسکتاپ)\n    │\n    ▼\n[Context Menu باز می‌شود]\n    │\n    ├── Reply\n    ├── Forward\n    ├── Copy Text\n    ├── Pin Message (ادمین)\n    └── Delete (اگر پیام خود کاربر است)\n    │\n    ▼ (Reply انتخاب شد)\n[Reply Bar بالای Input Area نمایش داده می‌شود]\n    │\n    ├── [↩️] [نام فرستنده: متن پیام...] [✕ بستن]\n    │\n    ▼\nکاربر پیام جدید را تایپ و ارسال می‌کند\n    │\n    ▼\nپیام با لینک به پیام اصلی ارسال می‌شود\n```\n\n### سناریوی فرعی: ارسال فایل/رسانه\n\n```\nکاربر روی 📎 کلیک می‌کند\n    │\n    ▼\n[Media Picker باز می‌شود]\n    │\n    ├── 📷 دوربین\n    ├── 🖼️ گالری\n    ├── 📁 فایل\n    └── 🎤 ضبط صدا\n    │\n    ▼ (انتخاب فایل)\n[Preview نمایش داده می‌شود]\n    │\n    ├── [Caption اضافه کنید...]\n    ├── [ارسال]\n    └── [لغو]\n    │\n    ▼ (ارسال)\n[Progress Bar آپلود]\n    │\n    ├── ✅ موفق → پیام ارسال شد\n    └── ❌ خطا → [تلاش مجدد]\n```\n\n---\n\n## 🔵 UF-03: تنظیمات و پروفایل (Settings Flow)\n\n### سناریوی اصلی: مدیریت تنظیمات\n\n```\n┌─────────────────────────────────────────────────────────────┐\n│   /app/settings                                             │\n│                                                             │\n│   ┌─────────────────────────────────────────────────────┐   │\n│   │ [👤] پروفایل                                       │   │\n│   │     نام: علی احمدی                                  │   │\n│   │     @ali_ahmadi                                     │   │\n│   └─────────────────────────────────────────────────────┘   │\n│                                                             │\n│   ┌─────────────────────────────────────────────────────┐   │\n│   │ ⚙️ تنظیمات حساب                                    │   │\n│   │                                                     │   │\n│   │   • 🔔 اعلان‌ها                       [ON/OFF]     │   │\n│   │   • 🔒 حریم خصوصی                                  │   │\n│   │   • 🎨 تم                         [Light/Dark]     │   │\n│   │   • 💾 مصرف داده                                   │   │\n│   │   • 🌐 زبان                        [فارسی]         │   │\n│   └─────────────────────────────────────────────────────┘   │\n│                                                             │\n│   ┌─────────────────────────────────────────────────────┐   │\n│   │ ℹ️ درباره فیستاپ                                   │   │\n│   │ 🔑 خروج از حساب                                    │   │\n│   └─────────────────────────────────────────────────────┘   │\n└─────────────────────────────────────────────────────────────┘\n```\n\n### سناریوی فرعی: تنظیمات حریم خصوصی\n\n```\n/settings → Privacy\n    │\n    ▼\n┌─────────────────────────────────────────────────────────────┐\n│   🔒 حریم خصوصی                                             │\n│                                                             │\n│   • Last Seen: [همه] [مخاطبین من] [هیچکس]                  │\n│   • پروفایل عکس: [همه] [مخاطبین من] [هیچکس]                │\n│   • Forwarded Messages: [همه] [مخاطبین من] [هیچکس]         │\n│   • تماس‌ها: [همه] [مخاطبین من]                            │\n│   • گروه‌ها و کانال‌ها: [همه] [مخاطبین من]                 │\n└─────────────────────────────────────────────────────────────┘\n```\n\n---\n\n## 🔵 UF-04: مدیریت مخاطبین (Contacts Flow)\n\n```\n/app/contacts\n    │\n    ▼\n[Check: آیا دسترسی به مخاطبین داده شده؟]\n    │                  │\n✅ Yes │             ❌ No │\n    ▼                  ▼\nنمایش لیست      [Request Permission]\nمخاطبین همگام‌شده    │\n    │           ✅ Granted │ ❌ Denied\n    │                ▼          ▼\n    │         [Sync Contacts]  پیام: \"برای یافتن\n    │                │          مخاطبین، دسترسی لازم است\"\n    │         [Match with DB]\n    │                │\n    │         ┌──────┴──────┐\n    │         ▼             ▼\n    │   ✅ Found       ❌ Not Found\n    │   (عضو فیستاپ)   (غیرعضو)\n    │         │             │\n    │         ▼             ▼\n    │   [Chat Now]    [Invite]\n    │                (ارسال لینک دعوت\n    │                 از طریق SMS/Share)\n```\n\n---\n\n## 🔵 UF-05: جستجو (Search Flow)\n\n```\n/app/search (یا Search در Sidebar)\n    │\n    ▼\n┌─────────────────────────────────────────────────────────────┐\n│   [🔍 جستجو در فیستاپ...]                                   │\n│                                                             │\n│   ──── نتایج اخیر ────                                      │\n│   [👤] علی احمدی                                            │\n│   [👥] گروه پروژه                                           │\n│                                                             │\n│   [تایپ کاربر شروع به تایپ می‌کند...]                       │\n└─────────────────────────────────────────────────────────────┘\n    │\n    ▼\n[Debounce: ۳۰۰ms → API Call]\n    │\n    ▼\n┌─────────────────────────────────────────────────────────────┐\n│   نتایج جستجو                                               │\n│                                                             │\n│   ──── کاربران ────                                         │\n│   [👤] ali_ahmadi - علی احمدی          [پیام]              │\n│   [👤] sara_m - سارا محمدی             [پیام]              │\n│                                                             │\n│   ──── گروه‌ها ────                                         │\n│   [👥] گروه توسعه - ۱۲ عضو              [عضویت]             │\n│                                                             │\n│   ──── کانال‌ها ────                                        │\n│   [📢] اخبار تکنولوژی - ۵K عضو          [عضویت]             │\n└─────────────────────────────────────────────────────────────┘\n```\n\n---\n\n## 🔵 UF-06: مدیریت گروه (Group Management Flow)\n\n### ایجاد گروه جدید\n\n```\nDashboard → [New Chat] → [New Group]\n    │\n    ▼\n┌─────────────────────────────────────────────────────────────┐\n│   ایجاد گروه جدید                                           │\n│   [📷 انتخاب عکس گروه]                                      │\n│   [نام گروه]                                                │\n│   [توضیحات (اختیاری)]                                       │\n│   ──── انتخاب اعضا ────                                     │\n│   [🔍 جستجوی مخاطبین]                                       │\n│   ☑️ علی احمدی                                              │\n│   ☑️ سارا محمدی                                             │\n│   ☐ رضا کریمی                                               │\n│   [ایجاد گروه] (فعال وقتی حداقل ۲ عضو انتخاب شده)           │\n└─────────────────────────────────────────────────────────────┘\n```\n\n---\n\n## 🔵 UF-07: مدیریت کانال (Channel Flow)\n\n```\nDashboard → [New Chat] → [New Channel]\n    │\n    ▼\n┌─────────────────────────────────────────────────────────────┐\n│   ایجاد کانال جدید                                          │\n│   [📷 انتخاب عکس کانال]                                     │\n│   [نام کانال]                                               │\n│   [توضیحات]                                                 │\n│   نوع کانال:                                                │\n│   ○ عمومی (قابل جستجو)                                      │\n│   ● خصوصی (فقط با لینک)                                     │\n│   [ایجاد کانال]                                             │\n└─────────────────────────────────────────────────────────────┘\n```\n\n---\n\n## 📊 ماتریس تصمیم‌گیری (Decision Matrix)\n\n| Decision Point | شرط | مسیر Yes | مسیر No |\n|---|---|---|---|\n| DP-01 | JWT Token معتبر؟ | → Dashboard | → Auth Flow |\n| DP-02 | شماره تلفن معتبر؟ | → OTP Verify | → Error + Retry |\n| DP-03 | OTP صحیح؟ | → Check Registration | → Error + Retry |\n| DP-04 | کاربر ثبت‌نام شده؟ | → Dashboard | → Profile Setup |\n| DP-05 | Username یکتا؟ | → Create Session | → Error + Retry |\n| DP-06 | دسترسی مخاطبین؟ | → Sync Contacts | → Request Permission |\n| DP-07 | اینترنت فعال؟ | → Online Mode | → Offline Queue |\n| DP-08 | فایل آپلود شد؟ | → Show in Chat | → Retry / Error |\n\n---\n\n## 🔄 حالت آفلاین (Offline Mode)\n\n```\n[Internet Connection Lost]\n    │\n    ▼\n┌─────────────────────────────────────────────────────────────┐\n│   نوار وضعیت: \"در حال تلاش برای اتصال...\"                  │\n│   • پیام‌ها → ذخیره در IndexedDB                           │\n│   • آپلود فایل‌ها → Pause و Queue                           │\n└─────────────────────────────────────────────────────────────┘\n    │\n    ▼ (Connection Restored)\n[Sync Queue with Server]\n    ├── ارسال پیام‌های ذخیره شده\n    ├── ادامه آپلود فایل‌ها\n    ├── دریافت پیام‌های جدید\n    └── به‌روزرسانی وضعیت‌ها\n```\n\n---\n\n## 📐 خلاصه صفحات و مسیرها\n\n| مسیر | عنوان | نقش |\n|---|---|---|\n| `/auth/welcome` | ورود شماره تلفن | شروع احراز هویت |\n| `/auth/verify` | تأیید OTP | مرحله دوم ورود |\n| `/auth/setup` | تکمیل پروفایل | ثبت‌نام اولیه |\n| `/app/dashboard` | صفحه اصلی | مرکز کنترل |\n| `/app/contacts` | مخاطبین | مدیریت و همگام‌سازی |\n| `/app/search` | جستجو | یافتن کاربر/گروه/کانال |\n| `/app/settings` | تنظیمات | پیکربندی حساب |\n| `/app/group-settings/:id` | تنظیمات گروه | مدیریت گروه |\n| `/app/profile/:id` | پروفایل کاربر | مشاهده اطلاعات |\n\n---\n\n> **پایان مستند User Flow**\n",
+    "wireframe_structure": "# 🏗️ Wireframe Structure — Fistap Messenger\n\n> **نسخه:** 1.0 | **لایه:** ۲ (UX Design) | **تاریخ:** ۲۰۲۶-۰۶-۱۰\n> **واحد اندازه‌گیری:** rem (1rem = 16px) | **Breakpoint موبایل:** ≤768px\n\n---\n\n## فهرست وایرفریم‌ها\n\n| شناسه | نام صفحه | مسیر | حالت |\n|---|---|---|---|\n| WF-01 | ورود شماره تلفن | `/auth/welcome` | موبایل + دسکتاپ |\n| WF-02 | تأیید OTP | `/auth/verify` | موبایل + دسکتاپ |\n| WF-03 | تکمیل پروفایل | `/auth/setup` | موبایل + دسکتاپ |\n| WF-04 | داشبورد اصلی | `/app/dashboard` | موبایل + دسکتاپ |\n| WF-05 | پنجره چت فعال | Chat Window | موبایل + دسکتاپ |\n| WF-06 | مخاطبین | `/app/contacts` | موبایل + دسکتاپ |\n| WF-07 | جستجو | `/app/search` | موبایل + دسکتاپ |\n| WF-08 | تنظیمات | `/app/settings` | موبایل + دسکتاپ |\n| WF-09 | پروفایل کاربر | `/app/profile/:id` | موبایل + دسکتاپ |\n\n---\n\n## 📱 WF-01: ورود (`/auth/welcome`)\n\n### دسکتاپ\n\n```\n┌───────────────────────────────────────────────┐\n│          [FISTAP LOGO 120×120px]              │\n│                                               │\n│       به فیستاپ خوش آمدید                     │\n│       سریع، امن، بدون فیلتر                   │\n│                                               │\n│    ┌─────────────────────────────────────┐   │\n│    │ 📞 شماره تلفن                        │   │\n│    │ [+98▼] [  912 345 6789  ]           │   │\n│    └─────────────────────────────────────┘   │\n│                                               │\n│    ┌─────────────────────────────────────┐   │\n│    │         [    ادامه    ]              │   │\n│    └─────────────────────────────────────┘   │\n│                                               │\n│    با ادامه، با [قوانین و مقررات] موافقت      │\n│    می‌کنید.                                   │\n└───────────────────────────────────────────────┘\n```\n\n### Annotation\n\n| المان | رفتار |\n|---|---|\n| Dropdown کشور | Auto-detect IP، پیش‌فرض +98 |\n| Input شماره | Numeric keypad، ماسک: 9XX XXX XXXX |\n| دکمه ادامه | Disabled تا شماره ≥۱۱ رقم |\n\n---\n\n## 📱 WF-02: تأیید OTP (`/auth/verify`)\n\n### دسکتاپ\n\n```\n┌───────────────────────────────────────────────┐\n│           [FISTAP LOGO 80×80px]               │\n│                                               │\n│         کد تأیید                              │\n│    کد ارسال شده به 98-912***6789              │\n│                                               │\n│    [✏️ تغییر شماره]                           │\n│                                               │\n│    ┌─┬─┬─┬─┬─┐   (5 خانه OTP)                │\n│    │ │ │ │ │ │                                │\n│    └─┴─┴─┴─┴─┘                                │\n│                                               │\n│    ──── 01:59 ────  (تایمر)                  │\n│                                               │\n│    ┌─────────────────────────────────────┐   │\n│    │   [ ارسال مجدد کد ]                 │   │\n│    └─────────────────────────────────────┘   │\n│                                               │\n│    ┌─────────────────────────────────────┐   │\n│    │   [  تأیید و ورود  ]                │   │\n│    └─────────────────────────────────────┘   │\n└───────────────────────────────────────────────┘\n```\n\n### Annotation\n\n| المان | رفتار |\n|---|---|\n| شماره مخفی‌شده | `98-912***6789` |\n| خانه‌های OTP | Auto-focus → Next، Auto-submit وقتی ۵ رقم |\n| تایمر | ۱۲۰ ثانیه، فرمت MM:SS |\n\n---\n\n## 📱 WF-03: تکمیل پروفایل (`/auth/setup`)\n\n### دسکتاپ\n\n```\n┌───────────────────────────────────────────────┐\n│             [📷]                              │\n│         ┌───────────────┐                     │\n│         │  (دایره 100px) │                     │\n│         │  آواتار +      │                     │\n│         │  آیکون دوربین  │                     │\n│         └───────────────┘                     │\n│         انتخاب عکس                            │\n│                                               │\n│    ┌─────────────────────────────────────┐   │\n│    │ نام و نام خانوادگی                  │   │\n│    │ [  علی احمدی  ]                     │   │\n│    └─────────────────────────────────────┘   │\n│                                               │\n│    ┌─────────────────────────────────────┐   │\n│    │ نام کاربری                           │   │\n│    │ [  @ali_ahmadi  ]                   │   │\n│    │  ✓ این نام کاربری آزاد است          │   │\n│    └─────────────────────────────────────┘   │\n│                                               │\n│    ┌─────────────────────────────────────┐   │\n│    │   [  ورود به فیستاپ  ]              │   │\n│    └─────────────────────────────────────┘   │\n│                                               │\n│    [ رد شدن (بعداً تنظیم می‌کنم) ]            │\n└───────────────────────────────────────────────┘\n```\n\n---\n\n## 📱 WF-04: داشبورد اصلی (`/app/dashboard`)\n\n### دسکتاپ — سه ستونه\n\n```\n┌────Sidebar────┬──Chat List──┬──────Chat Window──────┐\n│ 👤 پروفایل     │ [🔍جستجو...]│                        │\n│ علی احمدی     │             │                        │\n│ @ali_ahm      │ ┌─────────┐ │ ┌─Header: نام + وضعیت─│ │\n│               │ │👤 سارا  │ │ └──────────────────────│ │\n│ [💬 چت‌ها]    │ │  حالت.. │ │                        │ │\n│ [👥 مخاطبین]  │ │  12:30✓✓│ │ ┌─Message List─────────│ │\n│ [👥 گروه‌ها]   │ ├─────────┤ │ │                      │ │\n│ [📢 کانال‌ها]  │ │👥 گروه..│ │ │  حباب‌های پیام       │ │\n│               │ │  علی:.. │ │ │                      │ │\n│ ────────────  │ │  12:25  │ │ └──────────────────────│ │\n│               │ ├─────────┤ │                        │ │\n│ [⚙️ تنظیمات]  │ │📢 اخبار │ │ ┌─Input Area───────────│ │\n│ [🚪 خروج]     │ │  🆕...  │ │ │[📎][📷][🎤][پیام]│ │\n│               │ │  11:50  │ │ └──────────────────────│ │\n└───────────────┴───────────┴────────────────────────┘\n```\n\n### موبایل — تک ستونه\n\n```\n┌─────────────────────────┐\n│ ☰  FISTAP    🔍 👤     │\n├─────────────────────────┤\n│ [🔍 جستجو...]           │\n├─────────────────────────┤\n│ 👤 سارا محمدی ●         │\n│    سلام! حالت خوبه؟     │\n│    12:30  ✓✓            │\n├─────────────────────────┤\n│ 👥 گروه توسعه           │\n│    علی: فایل رو...      │\n│    12:25                │\n├─────────────────────────┤\n│ 📢 اخبار تکنولوژی       │\n│    🆕 آپدیت جدید       │\n│    11:50  (3)           │\n├─────────────────────────┤\n│ [✏️ FAB چت جدید]        │\n├─────────────────────────┤\n│ 💬 👥 📢 🔍 ⚙️           │\n└─────────────────────────┘\n```\n\n---\n\n## 📱 WF-05: پنجره چت فعال (Chat Window)\n\n### دسکتاپ\n\n```\n┌────────────────────────────────────────────────┐\n│ Header (64px)                                  │\n│ [←] [Avatar] سارا محمدی ● آنلاین  [📞][⋮]    │\n├────────────────────────────────────────────────┤\n│ 📌 سارا: جلسه فردا ساعت ۱۰ صبح        [✕]     │\n├────────────────────────────────────────────────┤\n│ Messages Area (scrollable)                     │\n│                                                │\n│  ┌──────────┐                                  │\n│  │ سلام!     │                                 │\n│  │ حالت خوبه؟│                                 │\n│  └──────────┘                                 │\n│  12:28  ✓✓                                    │\n│                                                │\n│              ┌──────────┐                      │\n│              │ سلام!     │                      │\n│              │ مرسی، تو │                      │\n│              │ چطوری؟   │                      │\n│              └──────────┘                      │\n│              12:29  ✓✓                        │\n│                                                │\n│              ┌──────────┐                      │\n│              │ ⚫⚪⚪   │ ← Typing              │\n│              └──────────┘                      │\n│                                                │\n├────────────────────────────────────────────────┤\n│ Input Area (72px)                              │\n│ [📎][📷][🎤] [ پیام... ] [😊] [➤]             │\n└────────────────────────────────────────────────┘\n```\n\n### Annotation\n\n| المان | رفتار |\n|---|---|\n| حباب ارسالی | گوشه راست، رنگ: #2563EB، tail: راست پایین |\n| حباب دریافتی | گوشه چپ، رنگ: #F1F5F9، tail: چپ بالا |\n| Pinned Message | قابل کلیک → Scroll به پیام |\n| Reply Bar | بالای Input Area، border-left آبی |\n\n---\n\n## 📱 WF-06: مخاطبین (`/app/contacts`)\n\n```\n┌──────────────┬──────────────────────────────┐\n│  Sidebar     │   Contacts Panel             │\n│              │                              │\n│              │ مخاطبین (۱۲۸)    [📥همگام‌سازی]│\n│              │ [🔍 جستجوی مخاطبین...]       │\n│              │                              │\n│              │ ──── اعضای فیستاپ (۸۵) ────  │\n│              │ [👤] علی احمدی ●  [💬پیام]   │\n│              │ [👤] مریم حسینی ● [💬پیام]   │\n│              │ [👤] سارا محمدی   [💬پیام]   │\n│              │                              │\n│              │ ──── دعوت کنید (۴۳) ────     │\n│              │ [👤] رضا کریمی    [📤دعوت]   │\n└──────────────┴──────────────────────────────┘\n```\n\n---\n\n## 📱 WF-07: جستجو (`/app/search`)\n\n```\n┌────────────────────────────────────────────┐\n│ [🔍 جستجو در فیستاپ...]         [✕]       │\n│                                            │\n│ ──── نتایج اخیر ────                       │\n│ [👤] علی احمدی  [👥] گروه توسعه           │\n│                                            │\n│ (پس از تایپ)                               │\n│                                            │\n│ ──── کاربران (۲) ────                      │\n│ [👤] سارا محمدی @sara_m ●  [💬پیام]       │\n│                                            │\n│ ──── گروه‌ها (۱) ────                       │\n│ [👥] گروه سارا و دوستان    [عضویت]        │\n└────────────────────────────────────────────┘\n```\n\n---\n\n## 📱 WF-08: تنظیمات (`/app/settings`)\n\n```\n┌──────────────┬──────────────────────────────┐\n│  Sidebar     │   Settings Panel             │\n│              │                              │\n│              │ ⚙️ تنظیمات                   │\n│              │ [👤] علی احمدی               │\n│              │      @ali_ahmadi             │\n│              │      ──────────              │\n│              │      شماره: ۰۹۱۲۳۴۵۶۷۸۹     │\n│              │                [✏️ویرایش]     │\n│              │                              │\n│              │ 🔔 اعلان‌ها                  │\n│              │   اعلان پیام‌ها  [ON ───●]   │\n│              │                              │\n│              │ 🔒 حریم خصوصی                │\n│              │   Last Seen     [همه ▼]      │\n│              │   عکس پروفایل   [مخاطبین ▼]  │\n│              │                              │\n│              │ 🎨 ظاهر                       │\n│              │   [☀️ Light] [🌙 Dark]       │\n│              │                              │\n│              │ ℹ️ درباره فیستاپ   نسخه ۱.۰  │\n│              │ 🔑 خروج از حساب              │\n└──────────────┴──────────────────────────────┘\n```\n\n---\n\n## 📱 WF-09: پروفایل کاربر (`/app/profile/:id`)\n\n```\n┌─────────────────────────────────────────────┐\n│                              [✕]            │\n│                                             │\n│            ┌───────────────┐                │\n│            │  (دایره 120px) │                │\n│            │   آواتار       │                │\n│            └───────────────┘                │\n│                                             │\n│          سارا محمدی                          │\n│          @sara_m                             │\n│          ● آنلاین                             │\n│                                             │\n│    ┌───────────────────────────────────┐   │\n│    │ 💬 پیام                            │   │\n│    └───────────────────────────────────┘   │\n│                                             │\n│    ──── اطلاعات ────                        │\n│    بیو: طراح UI/UX                          │\n│                                             │\n│    ──── رسانه‌ها ────                       │\n│    [🖼️][🖼️][🖼️] [+۱۲]                     │\n│                                             │\n│    ──── لینک‌های مشترک ────                │\n│    [👥] گروه توسعه  [👥] پروژه X            │\n└─────────────────────────────────────────────┘\n```\n\n---\n\n## 📐 Grid System\n\n```\nدسکتاپ (≥769px): Container max-width 1440px\n12-column grid, gutter: 24px\n\nSidebar: 3 cols (280px fixed)\nChat List: 4 cols (360px fixed)\nChat Window: 5 cols (flexible)\n\nموبایل (≤768px): 100vw, Padding 16px, Single column\n```\n\n## 📐 Spacing Scale\n\n| Token | Value | کاربرد |\n|---|---|---|\n| `space-xs` | 4px | فاصله آیکون تا متن |\n| `space-sm` | 8px | Padding داخلی |\n| `space-md` | 16px | فاصله بین المان‌ها |\n| `space-lg` | 24px | فاصله بین بخش‌ها |\n| `space-xl` | 32px | فاصله بین بخش‌های اصلی |\n| `space-2xl` | 48px | فاصله Header/Content |\n\n---\n\n> **پایان Wireframe Structure**\n> **تمام ۹ صفحه وایرفریم (موبایل + دسکتاپ) مستند شد.**\n",
+    "visual_assets_library": "# 🎨 Visual Assets Library — Fistap Messenger\n\n> **نسخه:** 1.0 | **لایه:** ۲ (Visual Assets) | **تاریخ:** ۲۰۲۶-۰۶-۱۰\n> **ایده‌پرداز:** Agent 6 | **مبنا:** لوگوی رسمی Fistap\n\n---\n\n## ۱. فلسفه زبان بصری\n\n| اصل | توضیح |\n|---|---|\n| **سرعت** | خطوط سیال، زوایای تیز در جهت حرکت |\n| **اعتماد** | رنگ‌های آبی-سبزآبی، شفافیت و عمق |\n| **وضوح** | آیکون‌های قابل تشخیص در اندازه ۱۶px تا ۴۸px |\n| **یکپارچگی** | تمام المان‌ها از یک سیستم Stroke و Corner Radius پیروی می‌کنند |\n\n---\n\n## ۲. پالت رنگی اصلی (برگرفته از لوگو)\n\n### رنگ‌های برند\n\n| نام | HEX | RGB | کاربرد |\n|---|---|---|---|\n| `brand-blue` | `#1E3A8A` | 30, 58, 138 | المان‌های اصلی، دکمه‌ها |\n| `brand-teal` | `#0D9488` | 13, 148, 136 | گرادیانت، هایلایت‌ها |\n| `brand-cyan` | `#06B6D4` | 6, 182, 212 | Glow effect، Accent |\n| `brand-glow` | `#67E8F9` | 103, 232, 249 | Border glow، Shadow |\n\n### گرادیانت اصلی (لوگو)\n\n```css\nlinear-gradient(135deg, #1E3A8A 0%, #0D9488 50%, #06B6D4 100%)\n```\n\n### رنگ‌های آیکون‌ها\n\n| حالت | رنگ | HEX |\n|---|---|---|\n| Active / Primary | Primary Blue | `#2563EB` |\n| Inactive / Secondary | Slate Gray | `#64748B` |\n| Success | Emerald | `#10B981` |\n| Warning | Amber | `#F59E0B` |\n| Error | Red | `#EF4444` |\n| Online | Green | `#22C55E` |\n\n---\n\n## ۳. سیستم آیکون (Icon System)\n\n### مشخصات فنی\n\n| ویژگی | مقدار |\n|---|---|\n| **Grid** | 24×24px (viewBox) |\n| **Stroke Width** | 2px (استاندارد) |\n| **Corner Radius** | 2px (خطوط)، 50% (دایره‌ها) |\n| **Stroke Cap** | round |\n| **Stroke Join** | round |\n| **Fill** | none (خطی) / solid (توپُر) |\n\n### دسته‌بندی آیکون‌ها\n\n| دسته | شناسه | تعداد | پیشوند فایل |\n|---|---|---|---|\n| ناوبری | NAV | ۶ | `nav-*.svg` |\n| دکمه‌ها و اکشن‌ها | ACT | ۸ | `btn-*.svg` |\n| وضعیت پیام | MSG | ۵ | `msg-*.svg` |\n| وضعیت کاربر | STATUS | ۴ | `status-*.svg` |\n| فایل و رسانه | FILE | ۴ | `file-*.svg` |\n| رابط کاربری | UI | ۱۲ | `ui-*.svg` |\n| **مجموع** | — | **۳۹** | — |\n\n---\n\n## ۴. راهنمای استفاده\n\n### در HTML/Tailwind\n\n```html\n<img src=\"/icons/nav-chats.svg\" class=\"w-6 h-6\" alt=\"چت‌ها\" />\n```\n\n### در CSS\n\n```css\n.icon-primary {\n  filter: invert(37%) sepia(83%) saturate(1847%) hue-rotate(202deg) brightness(97%) contrast(101%);\n}\n```\n\n### در React\n\n```tsx\nimport { ReactComponent as IconSend } from './icons/btn-send.svg';\n<IconSend className=\"w-5 h-5 text-blue-600\" />\n```\n\n---\n\n## ۵. لیست کامل آیکون‌ها\n\n### ۵.۱ ناوبری (Navigation)\n\n| فایل | شناسه | توضیح |\n|---|---|---|\n| `nav-chats.svg` | NAV-01 | حباب پیام — صفحه چت‌ها |\n| `nav-contacts.svg` | NAV-02 | دو نفر — صفحه مخاطبین |\n| `nav-channels.svg` | NAV-03 | بلندگو — صفحه کانال‌ها |\n| `nav-search.svg` | NAV-04 | ذره‌بین — جستجو |\n| `nav-settings.svg` | NAV-05 | چرخ‌دنده — تنظیمات |\n| `nav-profile.svg` | NAV-06 | آیکون پروفایل کاربر |\n\n### ۵.۲ دکمه‌ها و اکشن‌ها (Action Buttons)\n\n| فایل | شناسه | توضیح |\n|---|---|---|\n| `btn-send.svg` | ACT-01 | فلش ارسال پیام |\n| `btn-attach.svg` | ACT-02 | گیره کاغذ — پیوست فایل |\n| `btn-camera.svg` | ACT-03 | دوربین — عکس/ویدیو |\n| `btn-mic.svg` | ACT-04 | میکروفون — ضبط صدا |\n| `btn-emoji.svg` | ACT-05 | ایموجی — انتخاب شکلک |\n| `btn-voice.svg` | ACT-06 | تماس صوتی |\n| `btn-video.svg` | ACT-07 | تماس تصویری |\n| `btn-new-chat.svg` | ACT-08 | پیام جدید (FAB) |\n\n### ۵.۳ وضعیت پیام (Message Status)\n\n| فایل | شناسه | توضیح |\n|---|---|---|\n| `msg-sent.svg` | MSG-01 | تیک واحد — ارسال شده |\n| `msg-delivered.svg` | MSG-02 | دو تیک — تحویل داده شده |\n| `msg-read.svg` | MSG-03 | دو تیک آبی — خوانده شده |\n| `msg-reply.svg` | MSG-04 | فلش بازگشت — پاسخ |\n| `msg-forward.svg` | MSG-05 | فلش جلو — فوروارد |\n\n### ۵.۴ وضعیت کاربر (User Status)\n\n| فایل | شناسه | توضیح |\n|---|---|---|\n| `status-online.svg` | STATUS-01 | دایره سبز — آنلاین |\n| `status-offline.svg` | STATUS-02 | دایره خاکستری — آفلاین |\n| `status-typing.svg` | STATUS-03 | سه نقطه — در حال تایپ |\n| `status-dnd.svg` | STATUS-04 | خط روی زنگ — عدم مزاحمت |\n\n### ۵.۵ فایل و رسانه (File & Media)\n\n| فایل | شناسه | توضیح |\n|---|---|---|\n| `file-image.svg` | FILE-01 | تصویر — عکس |\n| `file-video.svg` | FILE-02 | ویدیو — فیلم |\n| `file-audio.svg` | FILE-03 | صوت — ویس/موزیک |\n| `file-doc.svg` | FILE-04 | سند — PDF/DOC |\n\n### ۵.۶ رابط کاربری (UI Elements)\n\n| فایل | شناسه | توضیح |\n|---|---|---|\n| `ui-back.svg` | UI-01 | فلش بازگشت |\n| `ui-menu.svg` | UI-02 | سه نقطه عمودی — منو |\n| `ui-close.svg` | UI-03 | ضربدر — بستن |\n| `ui-pin.svg` | UI-04 | سنجاق — پین پیام |\n| `ui-delete.svg` | UI-05 | سطل زباله — حذف |\n| `ui-verified.svg` | UI-06 | تیک در دایره — تأیید شده |\n\n### ۵.۷ تکمیلی (Additional)\n\n| فایل | شناسه | توضیح |\n|---|---|---|\n| `ui-hamburger.svg` | UI-07 | سه خط افقی — منوی همبرگر |\n| `ui-logout.svg` | UI-08 | خروج از حساب |\n| `ui-info.svg` | UI-09 | اطلاعات / درباره |\n| `ui-share.svg` | UI-10 | اشتراک‌گذاری |\n| `ui-download.svg` | UI-11 | دانلود فایل |\n| `ui-add.svg` | UI-12 | افزودن / ایجاد جدید |\n\n---\n\n## ۶. انیمیشن‌های پیشنهادی\n\n| آیکون | انیمیشن | مدت |\n|---|---|---|\n| `status-typing.svg` | bounce متناوب سه نقطه | 1.2s loop |\n| `btn-send.svg` | scale up در hover | 200ms |\n| `msg-read.svg` | رنگ از خاکستری به آبی | 300ms |\n| `status-online.svg` | pulse ring | 2s loop |\n| `btn-mic.svg` | waveform animation در حالت ضبط | real-time |\n\n---\n\n## ۷. فایل‌های خروجی نهایی\n\n| مسیر | توضیح | تعداد |\n|---|---|---|\n| `/icons/nav-*.svg` | آیکون‌های ناوبری | ۶ |\n| `/icons/btn-*.svg` | آیکون‌های دکمه و اکشن | ۸ |\n| `/icons/msg-*.svg` | آیکون‌های وضعیت پیام | ۵ |\n| `/icons/status-*.svg` | آیکون‌های وضعیت کاربر | ۴ |\n| `/icons/file-*.svg` | آیکون‌های فایل و رسانه | ۴ |\n| `/icons/ui-*.svg` | آیکون‌های رابط کاربری | ۱۲ |\n| **مجموع کل** | **تمام آیکون‌های SVG** | **۳۹** |\n\n---\n\n> **پایان Visual Assets Library**\n> **تمام ۳۹ فایل SVG در پوشه `02-visual-assets/icons/` تولید شده‌اند.**\n",
+    "design_system": "# 🎨 Design System — Fistap Messenger\n\n> **نسخه:** 1.0 | **لایه:** ۲ (UI Design System) | **تاریخ:** ۲۰۲۶-۰۶-۱۰\n> **ایده‌پرداز:** Agent 7 | **مبنا:** لوگو رسمی Fistap + Visual Assets Library\n> **فریمورک CSS:** Tailwind CSS v3.x\n\n---\n\n## فهرست مطالب\n\n| بخش | شناسه | توضیح |\n|---|---|---|\n| ۱. پالت رنگی | DS-COLOR | Light Mode + Dark Mode |\n| ۲. تایپوگرافی | DS-TYPE | فونت، سایز، وزن |\n| ۳. Spacing | DS-SPACE | مقیاس فاصله‌ها |\n| ۴. Border Radius | DS-RADIUS | گوشه‌های گرد |\n| ۵. سایه‌ها | DS-SHADOW | Elevation levels |\n| ۶. حباب پیام | DS-BUBBLE | Message Bubble Styles |\n| ۷. دکمه‌ها | DS-BTN | Button Variants |\n| ۸. Input Fields | DS-INPUT | فرم‌ها و ورودی‌ها |\n| ۹. ناوبری | DS-NAV | Sidebar, Bottom Nav |\n| ۱۰. کارت‌ها | DS-CARD | Card Components |\n| ۱۱. وضعیت‌ها | DS-STATUS | Badges, Indicators |\n| ۱۲. Tailwind Config | DS-TW | ngاشت به Tailwind |\n\n---\n\n## 🔵 ۱. پالت رنگی (Color Palette)\n\n### ۱.۱ رنگ‌های برند (Brand Colors)\n\n| Token | Light Mode | Dark Mode | کاربرد |\n|---|---|---|---|\n| `brand.50` | `#EFF6FF` | `#0C1A3A` | Background بسیار روشن |\n| `brand.100` | `#DBEAFE` | `#1E3A5F` | Background روشن |\n| `brand.200` | `#BFDBFE` | `#2D5A8E` | Border روشن |\n| `brand.300` | `#93C5FD` | `#3B82F6` | Accent ثانویه |\n| `brand.400` | `#60A5FA` | `#60A5FA` | Accent اصلی |\n| `brand.500` | `#3B82F6` | `#93C5FD` | Primary Button |\n| `brand.600` | `#2563EB` | `#BFDBFE` | Primary Hover |\n| `brand.700` | `#1D4ED8` | `#DBEAFE` | Primary Active |\n| `brand.800` | `#1E40AF` | `#EFF6FF` | متن تیره |\n| `brand.900` | `#1E3A8A` | `#FFFFFF` | متن خیلی تیره |\n\n### ۱.۲ رنگ‌های خنثی (Neutral)\n\n| Token | Light Mode | Dark Mode | کاربرد |\n|---|---|---|---|\n| `neutral.50` | `#F8FAFC` | `#0F172A` | Background اصلی |\n| `neutral.100` | `#F1F5F9` | `#1E293B` | Background سطح ۲ |\n| `neutral.200` | `#E2E8F0` | `#334155` | Border |\n| `neutral.300` | `#CBD5E1` | `#475569` | Divider |\n| `neutral.400` | `#94A3B8` | `#64748B` | متن غیرفعال |\n| `neutral.500` | `#64748B` | `#94A3B8` | متن ثانویه |\n| `neutral.600` | `#475569` | `#CBD5E1` | متن اصلی |\n| `neutral.700` | `#334155` | `#E2E8F0` | متن تیره |\n| `neutral.800` | `#1E293B` | `#F1F5F9` | Heading |\n| `neutral.900` | `#0F172A` | `#F8FAFC` | متن خیلی تیره |\n\n### ۱.۳ رنگ‌های حباب پیام\n\n| Token | Light Mode | Dark Mode | کاربرد |\n|---|---|---|---|\n| `bubble.sent` | `#2563EB` | `#1E40AF` | حباب ارسالی |\n| `bubble.sentText` | `#FFFFFF` | `#FFFFFF` | متن حباب ارسالی |\n| `bubble.received` | `#F1F5F9` | `#1E293B` | حباب دریافتی |\n| `bubble.receivedText` | `#1E293B` | `#F1F5F9` | متن حباب دریافتی |\n| `bubble.time` | `#64748B` | `#94A3B8` | زمان پیام |\n\n---\n\n## 🔤 ۲. تایپوگرافی (Typography)\n\n### ۲.۱ فونت‌ها\n\n| نقش | فونت | Weight |\n|---|---|---|\n| **فونت اصلی (فارسی)** | `Vazirmatn` | 400, 500, 700, 900 |\n| **فونت لاتین** | `Inter` | 400, 500, 600, 700 |\n| **فونت Mono** | `JetBrains Mono` | 400, 500 |\n\n### ۲.۲ مقیاس تایپوگرافی\n\n| Style | Font Size | Line Height | Weight | کاربرد | Tailwind |\n|---|---|---|---|---|---|\n| `display-xl` | 2.5rem (40px) | 1.1 | 900 | عنوان اصلی | `text-4xl font-black` |\n| `display-lg` | 2rem (32px) | 1.2 | 700 | عنوان صفحه | `text-3xl font-bold` |\n| `heading-1` | 1.5rem (24px) | 1.3 | 700 | هدر بخش | `text-2xl font-bold` |\n| `heading-2` | 1.25rem (20px) | 1.4 | 600 | زیرعنوان | `text-xl font-semibold` |\n| `heading-3` | 1.125rem (18px) | 1.4 | 600 | عنوان کوچک | `text-lg font-semibold` |\n| `body-lg` | 1rem (16px) | 1.5 | 400 | متن اصلی | `text-base` |\n| `body-md` | 0.875rem (14px) | 1.5 | 400 | متن ثانویه | `text-sm` |\n| `body-sm` | 0.75rem (12px) | 1.4 | 400 | کپشن، زمان | `text-xs` |\n| `button` | 0.875rem (14px) | 1 | 600 | دکمه‌ها | `text-sm font-semibold` |\n| `caption` | 0.6875rem (11px) | 1.4 | 400 | ریزترین متن | `text-[11px]` |\n\n---\n\n## 📏 ۳. Spacing Scale\n\n| Token | REM | PX | کاربرد | Tailwind |\n|---|---|---|---|---|\n| `space-1` | 0.25rem | 4px | فاصله بسیار کوچک | `p-1` |\n| `space-2` | 0.5rem | 8px | فاصله کوچک داخلی | `p-2` |\n| `space-3` | 0.75rem | 12px | فاصله آیکون تا متن | `p-3` |\n| `space-4` | 1rem | 16px | Padding استاندارد | `p-4` |\n| `space-5` | 1.25rem | 20px | فاصله المان‌ها | `p-5` |\n| `space-6` | 1.5rem | 24px | Gutter گرید | `p-6` |\n| `space-8` | 2rem | 32px | فاصله بخش‌ها | `p-8` |\n| `space-10` | 2.5rem | 40px | فاصله بزرگ | `p-10` |\n| `space-12` | 3rem | 48px | فاصله خیلی بزرگ | `p-12` |\n| `space-16` | 4rem | 64px | فاصله Header | `p-16` |\n\n---\n\n## 🔘 ۴. Border Radius\n\n| Token | REM | PX | کاربرد | Tailwind |\n|---|---|---|---|---|\n| `radius-none` | 0 | 0px | المان‌های تیز | `rounded-none` |\n| `radius-sm` | 0.25rem | 4px | Input fields | `rounded` |\n| `radius-md` | 0.5rem | 8px | دکمه‌ها، کارت‌ها | `rounded-lg` |\n| `radius-lg` | 0.75rem | 12px | Modal، Dropdown | `rounded-xl` |\n| `radius-xl` | 1rem | 16px | کارت‌های بزرگ | `rounded-2xl` |\n| `radius-2xl` | 1.5rem | 24px | حباب پیام | `rounded-3xl` |\n| `radius-full` | 9999px | 100% | آواتار، دایره | `rounded-full` |\n\n### Border Radius حباب پیام\n\n```css\n/* حباب ارسالی (سمت چپ در RTL) */\n.bubble-sent { border-radius: 1.5rem 1.5rem 0.25rem 1.5rem; }\n/* حباب دریافتی (سمت راست در RTL) */\n.bubble-received { border-radius: 1.5rem 1.5rem 1.5rem 0.25rem; }\n```\n\n---\n\n## 🌑 ۵. سایه‌ها (Shadows)\n\n| Level | Light Mode | Dark Mode | کاربرد |\n|---|---|---|---|\n| `shadow-xs` | `0 1px 2px rgba(0,0,0,0.05)` | `0 1px 2px rgba(0,0,0,0.3)` | آیکون‌ها |\n| `shadow-sm` | `0 1px 3px rgba(0,0,0,0.1)` | `0 1px 3px rgba(0,0,0,0.4)` | دکمه‌ها |\n| `shadow-md` | `0 4px 6px rgba(0,0,0,0.07)` | `0 4px 6px rgba(0,0,0,0.5)` | کارت‌ها |\n| `shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | `0 10px 15px rgba(0,0,0,0.6)` | Modal |\n| `shadow-xl` | `0 20px 25px rgba(0,0,0,0.1)` | `0 20px 25px rgba(0,0,0,0.7)` | Sidebar |\n| `shadow-glow` | `0 0 15px rgba(6,182,212,0.3)` | `0 0 20px rgba(6,182,212,0.4)` | لوگو |\n\n---\n\n## 💬 ۶. حباب پیام (Message Bubble)\n\n### ۶.۱ حباب ارسالی\n\n```css\n.bubble-sent {\n  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);\n  color: #FFFFFF;\n  border-radius: 1.5rem 1.5rem 0.25rem 1.5rem;\n  padding: 0.625rem 0.875rem;\n  max-width: 65%;\n}\n.dark .bubble-sent { background: linear-gradient(135deg, #1E40AF 0%, #1E3A8A 100%); }\n```\n\n### ۶.۲ حباب دریافتی\n\n```css\n.bubble-received {\n  background: #F1F5F9;\n  color: #1E293B;\n  border-radius: 1.5rem 1.5rem 1.5rem 0.25rem;\n  padding: 0.625rem 0.875rem;\n  max-width: 65%;\n}\n.dark .bubble-received { background: #1E293B; color: #F1F5F9; }\n```\n\n### ۶.۳ حباب فایل\n\n```css\n.bubble-file {\n  display: flex; align-items: center; gap: 0.75rem;\n  padding: 0.75rem; border-radius: 1rem;\n  background: rgba(255,255,255,0.15); min-width: 16rem;\n}\n```\n\n### ۶.۴ Reply Bar\n\n```css\n.reply-bar {\n  display: flex; align-items: center; gap: 0.75rem;\n  padding: 0.5rem 0.75rem; border-left: 3px solid #3B82F6;\n  border-radius: 0.5rem; background: rgba(59,130,246,0.08);\n}\n```\n\n---\n\n## 🔘 ۷. دکمه‌ها (Buttons)\n\n### ۷.۱ دکمه اصلی\n\n```css\n.btn-primary {\n  padding: 0.625rem 1.5rem; font-size: 0.875rem; font-weight: 600;\n  color: #FFFFFF; background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);\n  border-radius: 0.5rem; transition: all 200ms ease;\n}\n.btn-primary:hover { box-shadow: 0 4px 12px rgba(37,99,235,0.4); }\n```\n\n### ۷.۲ دکمه ثانویه\n\n```css\n.btn-secondary {\n  padding: 0.625rem 1.5rem; font-size: 0.875rem; font-weight: 600;\n  color: #2563EB; background: transparent; border: 2px solid #2563EB;\n  border-radius: 0.5rem; transition: all 200ms ease;\n}\n```\n\n### ۷.۳ دکمه Ghost\n\n```css\n.btn-ghost {\n  padding: 0.5rem 1rem; font-size: 0.875rem; color: #64748B;\n  background: transparent; border: none; border-radius: 0.5rem;\n}\n.btn-ghost:hover { background: rgba(0,0,0,0.05); color: #1E293B; }\n```\n\n### ۷.۴ دکمه آیکون\n\n```css\n.btn-icon {\n  width: 2.5rem; height: 2.5rem; color: #64748B;\n  background: transparent; border-radius: 50%;\n}\n.btn-icon:hover { background: rgba(0,0,0,0.05); }\n```\n\n### ۷.۵ دکمه FAB\n\n```css\n.btn-fab {\n  position: fixed; bottom: 5rem; right: 1.5rem;\n  width: 3.5rem; height: 3.5rem; color: #FFFFFF;\n  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);\n  border-radius: 50%; box-shadow: 0 4px 12px rgba(37,99,235,0.4);\n}\n```\n\n---\n\n## 📝 ۸. Input Fields\n\n### ۸.۱ Input استاندارد\n\n```css\n.input {\n  width: 100%; padding: 0.625rem 0.875rem;\n  font-size: 0.875rem; color: #1E293B; background: #FFFFFF;\n  border: 2px solid #E2E8F0; border-radius: 0.5rem;\n}\n.input:focus { border-color: #2563EB; box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }\n.dark .input { color: #F1F5F9; background: #1E293B; border-color: #334155; }\n```\n\n### ۸.۲ OTP Input\n\n```css\n.otp-input {\n  width: 3.5rem; height: 3.5rem; text-align: center;\n  font-size: 1.5rem; font-weight: 700;\n  background: #FFFFFF; border: 2px solid #E2E8F0;\n  border-radius: 0.75rem;\n}\n.otp-input:focus { border-color: #2563EB; }\n```\n\n---\n\n## 🧭 ۹. ناوبری (Navigation)\n\n### ۹.۱ Header\n\n```css\n.header { height: 4rem; padding: 0 1rem; background: #FFFFFF; border-bottom: 1px solid #E2E8F0; }\n.header-mobile { height: 3.5rem; }\n.dark .header { background: #0F172A; border-color: #1E293B; }\n```\n\n### ۹.۲ Sidebar\n\n```css\n.sidebar { width: 17.5rem; background: #FFFFFF; border-left: 1px solid #E2E8F0; }\n.sidebar-item { padding: 0.75rem 1rem; color: #64748B; border-radius: 0.5rem; }\n.sidebar-item.active { background: rgba(37,99,235,0.1); color: #2563EB; }\n.dark .sidebar { background: #0F172A; border-color: #1E293B; }\n```\n\n### ۹.۳ Bottom Nav\n\n```css\n.bottom-nav { height: 3.5rem; background: #FFFFFF; border-top: 1px solid #E2E8F0; }\n.bottom-nav-item { flex: 1; color: #94A3B8; }\n.bottom-nav-item.active { color: #2563EB; }\n```\n\n### ۹.۴ Chat List Item\n\n```css\n.chat-list-item { padding: 0.75rem 1rem; cursor: pointer; }\n.chat-list-item.active { background: rgba(37,99,235,0.08); border-right: 3px solid #2563EB; }\n```\n\n---\n\n## 🃏 ۱۰. کارت‌ها (Cards)\n\n### ۱۰.۱ کارت استاندارد\n\n```css\n.card {\n  background: #FFFFFF; border: 1px solid #E2E8F0;\n  border-radius: 0.75rem; padding: 1rem;\n}\n.dark .card { background: #1E293B; border-color: #334155; }\n```\n\n### ۱۰.۲ Modal\n\n```css\n.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); }\n.modal { background: #FFFFFF; border-radius: 1rem; padding: 1.5rem; max-width: 28rem; }\n```\n\n---\n\n## 🏷️ ۱۱. وضعیت‌ها (Badges & Status)\n\n### ۱۱.۱ Badge\n\n```css\n.badge { min-width: 1.25rem; height: 1.25rem; padding: 0 0.375rem; font-size: 0.6875rem; font-weight: 700; color: #FFFFFF; background: #2563EB; border-radius: 9999px; }\n```\n\n### ۱۱.۲ Status Dot\n\n```css\n.status-online { background: #22C55E; }\n.status-offline { background: #9CA3AF; }\n.status-busy { background: #EF4444; }\n```\n\n### ۱۱.۳ Toggle Switch\n\n```css\n.toggle { width: 3rem; height: 1.75rem; background: #CBD5E1; border-radius: 9999px; }\n.toggle.checked { background: #2563EB; }\n```\n\n---\n\n## 📐 ۱۲. Tailwind CSS Config\n\n```javascript\nmodule.exports = {\n  darkMode: 'class',\n  theme: {\n    extend: {\n      colors: {\n        brand: { 50:'#EFF6FF', 100:'#DBEAFE', 200:'#BFDBFE', 300:'#93C5FD', 400:'#60A5FA', 500:'#3B82F6', 600:'#2563EB', 700:'#1D4ED8', 800:'#1E40AF', 900:'#1E3A8A' },\n        teal: { 50:'#F0FDFA', 100:'#CCFBF1', 400:'#2DD4BF', 500:'#14B8A6', 600:'#0D9488' },\n        bubble: { sent:'#2563EB', 'sent-text':'#FFFFFF', received:'#F1F5F9', 'received-text':'#1E293B' },\n      },\n      fontFamily: { sans: ['Vazirmatn','Inter','system-ui','sans-serif'], mono: ['JetBrains Mono','monospace'] },\n      borderRadius: { bubble: '1.5rem', 'bubble-tail': '0.25rem' },\n      boxShadow: { glow: '0 0 15px rgba(6,182,212,0.3)' },\n      animation: { 'pulse-ring': 'pulse 2s infinite', 'modal-in': 'modalIn 200ms ease-out' }\n    }\n  }\n}\n```\n\n---\n\n## 📐 خلاصه Quick Reference\n\n| المان | Light | Dark |\n|---|---|---|\n| Background اصلی | `#F8FAFC` | `#0F172A` |\n| Background سطح ۲ | `#F1F5F9` | `#1E293B` |\n| Border | `#E2E8F0` | `#334155` |\n| متن اصلی | `#1E293B` | `#F1F5F9` |\n| متن ثانویه | `#64748B` | `#94A3B8` |\n| حباب ارسالی | `#2563EB` | `#1E40AF` |\n| حباب دریافتی | `#F1F5F9` | `#1E293B` |\n| Primary Button | `#2563EB` | `#3B82F6` |\n\n---\n\n> **پایان Design System**\n> **تمام مشخصات طراحی آماده تحویل به Agent 8 (Handoff Specialist) است.**\n",
+    "readme": "# 📁 ساختار پروژه طراحی Fistap — لایه ۲\n\n> **نسخه:** 1.0 | **تاریخ:** ۲۰۲۶-۰۶-۱۰\n> **تیم:** طراحی لایه ۲ — AI-DOS Omnipotent\n\n---\n\n## 📂 ساختار پوشه‌ها\n\n```\nfistap-design/\n├── README.md                     ← همین فایل\n├── INDEX.md                      ← دسترسی سریع به فایل‌ها\n├── 01-ux-design/                 ← نقشه UX (Agent 5)\n│   ├── user_flow.md              ← ۷ فلو کاربری + ۸ Decision Point\n│   └── wireframe_structure.md    ← ۹ وایرفریم (موبایل + دسکتاپ)\n├── 02-visual-assets/             ← دارایی‌های بصری (Agent 6)\n│   ├── visual_assets_library.md  ← راهنمای زبان بصری + پالت رنگ\n│   └── icons/                    ← ۳۹ آیکون SVG\n│       ├── nav-*.svg             ← ۶ آیکون ناوبری\n│       ├── btn-*.svg             ← ۸ آیکون دکمه\n│       ├── msg-*.svg             ← ۵ آیکون وضعیت پیام\n│       ├── status-*.svg          ← ۴ آیکون وضعیت کاربر\n│       ├── file-*.svg            ← ۴ آیکون فایل\n│       └── ui-*.svg              ← ۱۲ آیکون رابط کاربری\n├── 03-ui-design-system/          ← Design System (Agent 7)\n│   └── design_system.md          ← رنگ، تایپوگرافی، حباب پیام، Tailwind Config\n├── 04-handoff/                   ← تحویل طراحی (Agent 8)\n│   └── ui_handoff_prompts.json   ← ۲۲ کامپوننت با ID یکتا\n└── 05-design-tokens/             ← توکن‌های طراحی (Agent 9)\n    └── design_tokens.json        ← ۱۲۰+ توکن رنگ/فاصله/تایپوگرافی\n```\n\n---\n\n## 📊 خلاصه خروجی‌ها\n\n| مرحله | پوشه | تعداد فایل | توضیح |\n|---|---|---|---|\n| ۱ | `01-ux-design/` | ۲ | User Flow + Wireframe |\n| ۲ | `02-visual-assets/` | ۴۰ | راهنما + ۳۹ SVG |\n| ۳ | `03-ui-design-system/` | ۱ | Design System جامع |\n| ۴ | `04-handoff/` | ۱ | ۲۲ پرامپت کامپوننت |\n| ۵ | `05-design-tokens/` | ۱ | ۱۲۰+ توکن |\n| **مجموع** | — | **۴۵ فایل** | — |\n\n---\n\n## 🚀 راهنمای سریع برای تیم توسعه (لایه ۳)\n\n### شروع سریع:\n1. `03-ui-design-system/design_system.md` → استایل‌دهی UI با Tailwind CSS\n2. `05-design-tokens/design_tokens.json` → کانفیگ Tailwind\n3. `04-handoff/ui_handoff_prompts.json` → ساخت ۲۲ کامپوننت React\n4. `02-visual-assets/icons/` → آیکون‌ها را در پوشه `public/icons/` کپی کنید\n\n### رنگ‌های اصلی:\n- **Primary:** `#2563EB` (brand.600)\n- **Gradient:** `#2563EB → #1D4ED8`\n- **Dark Background:** `#0F172A`\n- **Success/Online:** `#22C55E`\n\n### فونت‌ها:\n- **فارسی:** Vazirmatn\n- **لاتین:** Inter\n- **Mono:** JetBrains Mono\n",
+    "index": "# 🗂️ INDEX — دسترسی سریع به تمام فایل‌ها\n\n## 📱 مرحله ۱ — UX Design\n\n| فایل | مسیر | توضیح |\n|---|---|---|\n| User Flow | `01-ux-design/user_flow.md` | ۷ فلو اصلی + حالت آفلاین |\n| Wireframe | `01-ux-design/wireframe_structure.md` | ۹ صفحه، موبایل + دسکتاپ |\n\n## 🎨 مرحله ۲ — Visual Assets\n\n| فایل | مسیر | تعداد | توضیح |\n|---|---|---|---|\n| راهنما | `02-visual-assets/visual_assets_library.md` | ۱ | پالت رنگ + سیستم آیکون |\n| آیکون‌ها | `02-visual-assets/icons/` | ۳۹ SVG | ناوبری، دکمه، وضعیت، فایل |\n\n## 🖥️ مرحله ۳ — UI Design System\n\n| فایل | مسیر | توضیح |\n|---|---|---|\n| Design System | `03-ui-design-system/design_system.md` | ۱۲ بخش جامع + Tailwind |\n\n## 📦 مرحله ۴ — Handoff\n\n| فایل | مسیر | تعداد | توضیح |\n|---|---|---|---|\n| پرامپت‌ها | `04-handoff/ui_handoff_prompts.json` | ۲۲ کامپوننت | ID یکتا + Tailwind classes |\n\n## 🔢 مرحله ۵ — Design Tokens\n\n| فایل | مسیر | تعداد | توضیح |\n|---|---|---|---|\n| توکن‌ها | `05-design-tokens/design_tokens.json` | ۱۲۰+ توکن | HEX، REM، Shadow، Animation |\n"
+  },
+  "svg_icons": {
+    "btn-attach.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48\"/></svg>",
+      "category": "buttons"
+    },
+    "btn-camera.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"/><circle cx=\"12\" cy=\"13\" r=\"4\"/></svg>",
+      "category": "buttons"
+    },
+    "btn-emoji.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M8 14s1.5 2 4 2 4-2 4-2\"/><line x1=\"9\" y1=\"9\" x2=\"9.01\" y2=\"9\"/><line x1=\"15\" y1=\"9\" x2=\"15.01\" y2=\"9\"/></svg>",
+      "category": "buttons"
+    },
+    "btn-mic.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z\"/><path d=\"M19 10v2a7 7 0 0 1-14 0v-2\"/><line x1=\"12\" y1=\"19\" x2=\"12\" y2=\"23\"/><line x1=\"8\" y1=\"23\" x2=\"16\" y2=\"23\"/></svg>",
+      "category": "buttons"
+    },
+    "btn-new-chat.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7\"/><path d=\"M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z\"/></svg>",
+      "category": "buttons"
+    },
+    "btn-send.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"22\" y1=\"2\" x2=\"11\" y2=\"13\"/><polygon points=\"22 2 15 22 11 13 2 9 22 2\"/></svg>",
+      "category": "buttons"
+    },
+    "btn-video.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"23 7 16 12 23 17 23 7\"/><rect x=\"1\" y=\"5\" width=\"15\" height=\"14\" rx=\"2\" ry=\"2\"/></svg>",
+      "category": "buttons"
+    },
+    "btn-voice.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg>",
+      "category": "buttons"
+    },
+    "file-audio.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18V5l12-2v13\"/><circle cx=\"6\" cy=\"18\" r=\"3\"/><circle cx=\"18\" cy=\"16\" r=\"3\"/></svg>",
+      "category": "file_media"
+    },
+    "file-doc.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><polyline points=\"14 2 14 8 20 8\"/><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"/><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"/><polyline points=\"10 9 9 9 8 9\"/></svg>",
+      "category": "file_media"
+    },
+    "file-image.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"/><circle cx=\"8.5\" cy=\"8.5\" r=\"1.5\"/><polyline points=\"21 15 16 10 5 21\"/></svg>",
+      "category": "file_media"
+    },
+    "file-video.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"5 3 19 12 5 21 5 3\"/></svg>",
+      "category": "file_media"
+    },
+    "msg-delivered.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 6 7 14 3 10\"/><polyline points=\"18 6 10 14 6 10\"/></svg>",
+      "category": "message_status"
+    },
+    "msg-forward.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"23 4 23 10 17 10\"/><path d=\"M20.49 15a9 9 0 1 1-2.13-9.36L23 10\"/></svg>",
+      "category": "message_status"
+    },
+    "msg-read.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"#2563EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 6 7 14 3 10\"/><polyline points=\"18 6 10 14 6 10\"/></svg>",
+      "category": "message_status"
+    },
+    "msg-reply.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"1 4 1 10 7 10\"/><path d=\"M3.51 15a9 9 0 1 0 2.13-9.36L1 10\"/></svg>",
+      "category": "message_status"
+    },
+    "msg-sent.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"17 6 8 15 3 10\"/></svg>",
+      "category": "message_status"
+    },
+    "nav-channels.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"/><path d=\"M15.54 8.46a5 5 0 0 1 0 7.07\"/><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14\"/></svg>",
+      "category": "navigation"
+    },
+    "nav-chats.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z\"/></svg>",
+      "category": "navigation"
+    },
+    "nav-contacts.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/></svg>",
+      "category": "navigation"
+    },
+    "nav-profile.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"/><circle cx=\"12\" cy=\"7\" r=\"4\"/></svg>",
+      "category": "navigation"
+    },
+    "nav-search.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg>",
+      "category": "navigation"
+    },
+    "nav-settings.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z\"/></svg>",
+      "category": "navigation"
+    },
+    "status-dnd.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13.73 21a2 2 0 0 1-3.46 0\"/><path d=\"M18.63 13A17.89 17.89 0 0 1 18 8\"/><path d=\"M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14\"/><path d=\"M18 8a6 6 0 0 0-9.33-5\"/><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"/></svg>",
+      "category": "user_status"
+    },
+    "status-offline.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 14 14\"><circle cx=\"7\" cy=\"7\" r=\"6\" fill=\"#9CA3AF\"/></svg>",
+      "category": "user_status"
+    },
+    "status-online.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 14 14\"><circle cx=\"7\" cy=\"7\" r=\"6\" fill=\"#22C55E\"/></svg>",
+      "category": "user_status"
+    },
+    "status-typing.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\"><circle cx=\"6\" cy=\"12\" r=\"2.5\" fill=\"#64748B\"/><circle cx=\"12\" cy=\"12\" r=\"2.5\" fill=\"#64748B\"/><circle cx=\"18\" cy=\"12\" r=\"2.5\" fill=\"#64748B\"/></svg>",
+      "category": "user_status"
+    },
+    "ui-add.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"16\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-back.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"19\" y1=\"12\" x2=\"5\" y2=\"12\"/><polyline points=\"12 19 5 12 12 5\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-close.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-delete.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"3 6 5 6 21 6\"/><path d=\"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2\"/><line x1=\"10\" y1=\"11\" x2=\"10\" y2=\"17\"/><line x1=\"14\" y1=\"11\" x2=\"14\" y2=\"17\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-download.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-hamburger.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"3\" y1=\"6\" x2=\"21\" y2=\"6\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"3\" y1=\"18\" x2=\"21\" y2=\"18\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-info.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-logout.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4\"/><polyline points=\"16 17 21 12 16 7\"/><line x1=\"21\" y1=\"12\" x2=\"9\" y2=\"12\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-menu.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><circle cx=\"12\" cy=\"5\" r=\"1.5\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\"/><circle cx=\"12\" cy=\"19\" r=\"1.5\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-pin.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"22\"/><path d=\"M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-share.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg>",
+      "category": "ui_elements"
+    },
+    "ui-verified.svg": {
+      "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"/><polyline points=\"22 4 12 14.01 9 11.01\"/></svg>",
+      "category": "ui_elements"
+    }
+  }
+}

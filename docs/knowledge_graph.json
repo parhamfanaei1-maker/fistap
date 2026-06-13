@@ -1,0 +1,1085 @@
+{
+  "project": "Fistap v0.1.0",
+  "generated": "2026-06-12",
+  "generator": "AI-DOS role 15 (Context Guardian)",
+  "stats": {
+    "nodes": 98,
+    "edges": 77,
+    "features_covered": 4,
+    "ui_components_implemented": 22,
+    "routes": 10,
+    "test_files": 15
+  },
+  "nodes": [
+    {
+      "id": "FEAT-01",
+      "type": "feature",
+      "label": "Auth & Profile (OTP, JWT, @username)"
+    },
+    {
+      "id": "FEAT-02",
+      "type": "feature",
+      "label": "Messaging Core (realtime, ticks, reply, forward, pin)"
+    },
+    {
+      "id": "FEAT-03",
+      "type": "feature",
+      "label": "Media Handling (S3 presigned)"
+    },
+    {
+      "id": "FEAT-04",
+      "type": "feature",
+      "label": "PWA & Connectivity (SW, retry, push)"
+    },
+    {
+      "id": "server/src/modules/auth/phone.util.ts",
+      "type": "server_file",
+      "label": "phone.util.ts",
+      "meta": {
+        "loc": 24
+      }
+    },
+    {
+      "id": "server/src/modules/auth/otp.store.ts",
+      "type": "server_file",
+      "label": "otp.store.ts",
+      "meta": {
+        "loc": 89
+      }
+    },
+    {
+      "id": "server/src/modules/auth/otp.service.ts",
+      "type": "server_file",
+      "label": "otp.service.ts",
+      "meta": {
+        "loc": 75
+      }
+    },
+    {
+      "id": "server/src/modules/auth/session.store.ts",
+      "type": "server_file",
+      "label": "session.store.ts",
+      "meta": {
+        "loc": 58
+      }
+    },
+    {
+      "id": "server/src/modules/auth/session.service.ts",
+      "type": "server_file",
+      "label": "session.service.ts",
+      "meta": {
+        "loc": 59
+      }
+    },
+    {
+      "id": "server/src/modules/auth/ttl.util.ts",
+      "type": "server_file",
+      "label": "ttl.util.ts",
+      "meta": {
+        "loc": 9
+      }
+    },
+    {
+      "id": "server/src/modules/auth/auth.schemas.ts",
+      "type": "server_file",
+      "label": "auth.schemas.ts",
+      "meta": {
+        "loc": 18
+      }
+    },
+    {
+      "id": "server/src/modules/auth/auth.routes.ts",
+      "type": "server_file",
+      "label": "auth.routes.ts",
+      "meta": {
+        "loc": 154
+      }
+    },
+    {
+      "id": "server/src/modules/users/users.routes.ts",
+      "type": "server_file",
+      "label": "users.routes.ts",
+      "meta": {
+        "loc": 51
+      }
+    },
+    {
+      "id": "server/src/modules/messages/message.service.ts",
+      "type": "server_file",
+      "label": "message.service.ts",
+      "meta": {
+        "loc": 266
+      }
+    },
+    {
+      "id": "server/src/modules/messages/messages.routes.ts",
+      "type": "server_file",
+      "label": "messages.routes.ts",
+      "meta": {
+        "loc": 48
+      }
+    },
+    {
+      "id": "server/src/modules/conversations/conversation.service.ts",
+      "type": "server_file",
+      "label": "conversation.service.ts",
+      "meta": {
+        "loc": 213
+      }
+    },
+    {
+      "id": "server/src/modules/conversations/conversations.routes.ts",
+      "type": "server_file",
+      "label": "conversations.routes.ts",
+      "meta": {
+        "loc": 188
+      }
+    },
+    {
+      "id": "server/src/sockets/index.ts",
+      "type": "server_file",
+      "label": "index.ts",
+      "meta": {
+        "loc": 83
+      }
+    },
+    {
+      "id": "server/src/sockets/auth.middleware.ts",
+      "type": "server_file",
+      "label": "auth.middleware.ts",
+      "meta": {
+        "loc": 28
+      }
+    },
+    {
+      "id": "server/src/sockets/presence.service.ts",
+      "type": "server_file",
+      "label": "presence.service.ts",
+      "meta": {
+        "loc": 67
+      }
+    },
+    {
+      "id": "server/src/sockets/message.handlers.ts",
+      "type": "server_file",
+      "label": "message.handlers.ts",
+      "meta": {
+        "loc": 184
+      }
+    },
+    {
+      "id": "server/src/modules/media/media.service.ts",
+      "type": "server_file",
+      "label": "media.service.ts",
+      "meta": {
+        "loc": 116
+      }
+    },
+    {
+      "id": "server/src/modules/media/media.routes.ts",
+      "type": "server_file",
+      "label": "media.routes.ts",
+      "meta": {
+        "loc": 74
+      }
+    },
+    {
+      "id": "server/src/modules/push/push.service.ts",
+      "type": "server_file",
+      "label": "push.service.ts",
+      "meta": {
+        "loc": 117
+      }
+    },
+    {
+      "id": "server/src/modules/push/push.routes.ts",
+      "type": "server_file",
+      "label": "push.routes.ts",
+      "meta": {
+        "loc": 43
+      }
+    },
+    {
+      "id": "server/src/modules/contacts/contacts.service.ts",
+      "type": "server_file",
+      "label": "contacts.service.ts",
+      "meta": {
+        "loc": 72
+      }
+    },
+    {
+      "id": "server/src/modules/contacts/contacts.routes.ts",
+      "type": "server_file",
+      "label": "contacts.routes.ts",
+      "meta": {
+        "loc": 30
+      }
+    },
+    {
+      "id": "server/src/modules/search/search.service.ts",
+      "type": "server_file",
+      "label": "search.service.ts",
+      "meta": {
+        "loc": 92
+      }
+    },
+    {
+      "id": "server/src/modules/search/search.routes.ts",
+      "type": "server_file",
+      "label": "search.routes.ts",
+      "meta": {
+        "loc": 28
+      }
+    },
+    {
+      "id": "server/src/models/User.ts",
+      "type": "db_model",
+      "label": "User",
+      "meta": {
+        "collection": "users",
+        "schema_source": "database_schema.md"
+      }
+    },
+    {
+      "id": "server/src/models/Conversation.ts",
+      "type": "db_model",
+      "label": "Conversation",
+      "meta": {
+        "collection": "conversations",
+        "schema_source": "database_schema.md"
+      }
+    },
+    {
+      "id": "server/src/models/Message.ts",
+      "type": "db_model",
+      "label": "Message",
+      "meta": {
+        "collection": "messages",
+        "schema_source": "database_schema.md"
+      }
+    },
+    {
+      "id": "packages/shared/src/events.ts",
+      "type": "contract",
+      "label": "Socket.io Events (single source)"
+    },
+    {
+      "id": "UI-COMP-01",
+      "type": "design_component",
+      "label": "UI-COMP-01",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/layout/AppShell.tsx",
+      "type": "client_file",
+      "label": "AppShell.tsx"
+    },
+    {
+      "id": "UI-COMP-02",
+      "type": "design_component",
+      "label": "UI-COMP-02",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/layout/SidebarNav.tsx",
+      "type": "client_file",
+      "label": "SidebarNav.tsx"
+    },
+    {
+      "id": "UI-COMP-03",
+      "type": "design_component",
+      "label": "UI-COMP-03",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/ChatListPanel.tsx",
+      "type": "client_file",
+      "label": "ChatListPanel.tsx"
+    },
+    {
+      "id": "UI-COMP-04",
+      "type": "design_component",
+      "label": "UI-COMP-04",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/ChatWindow.tsx",
+      "type": "client_file",
+      "label": "ChatWindow.tsx"
+    },
+    {
+      "id": "UI-COMP-05",
+      "type": "design_component",
+      "label": "UI-COMP-05",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "UI-COMP-06",
+      "type": "design_component",
+      "label": "UI-COMP-06",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "UI-COMP-07",
+      "type": "design_component",
+      "label": "UI-COMP-07",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/ChatHeader.tsx",
+      "type": "client_file",
+      "label": "ChatHeader.tsx"
+    },
+    {
+      "id": "UI-COMP-08",
+      "type": "design_component",
+      "label": "UI-COMP-08",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/MessageList.tsx",
+      "type": "client_file",
+      "label": "MessageList.tsx"
+    },
+    {
+      "id": "UI-COMP-09",
+      "type": "design_component",
+      "label": "UI-COMP-09",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/MessageInput.tsx",
+      "type": "client_file",
+      "label": "MessageInput.tsx"
+    },
+    {
+      "id": "UI-COMP-10",
+      "type": "design_component",
+      "label": "UI-COMP-10",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/MessageBubble.tsx",
+      "type": "client_file",
+      "label": "MessageBubble.tsx"
+    },
+    {
+      "id": "UI-COMP-11",
+      "type": "design_component",
+      "label": "UI-COMP-11",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/DateDivider.tsx",
+      "type": "client_file",
+      "label": "DateDivider.tsx"
+    },
+    {
+      "id": "UI-COMP-12",
+      "type": "design_component",
+      "label": "UI-COMP-12",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/TypingIndicator.tsx",
+      "type": "client_file",
+      "label": "TypingIndicator.tsx"
+    },
+    {
+      "id": "UI-COMP-13",
+      "type": "design_component",
+      "label": "UI-COMP-13",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/chat/ReplyBar.tsx",
+      "type": "client_file",
+      "label": "ReplyBar.tsx"
+    },
+    {
+      "id": "UI-COMP-14",
+      "type": "design_component",
+      "label": "UI-COMP-14",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/ui/PrimaryButton.tsx",
+      "type": "client_file",
+      "label": "PrimaryButton.tsx"
+    },
+    {
+      "id": "UI-COMP-15",
+      "type": "design_component",
+      "label": "UI-COMP-15",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/ui/OtpInput.tsx",
+      "type": "client_file",
+      "label": "OtpInput.tsx"
+    },
+    {
+      "id": "UI-COMP-16",
+      "type": "design_component",
+      "label": "UI-COMP-16",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/ui/Fab.tsx",
+      "type": "client_file",
+      "label": "Fab.tsx"
+    },
+    {
+      "id": "UI-COMP-17",
+      "type": "design_component",
+      "label": "UI-COMP-17",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/layout/BottomNav.tsx",
+      "type": "client_file",
+      "label": "BottomNav.tsx"
+    },
+    {
+      "id": "UI-COMP-18",
+      "type": "design_component",
+      "label": "UI-COMP-18",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/ui/ToggleSwitch.tsx",
+      "type": "client_file",
+      "label": "ToggleSwitch.tsx"
+    },
+    {
+      "id": "UI-COMP-19",
+      "type": "design_component",
+      "label": "UI-COMP-19",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "UI-COMP-20",
+      "type": "design_component",
+      "label": "UI-COMP-20",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/ui/Modal.tsx",
+      "type": "client_file",
+      "label": "Modal.tsx"
+    },
+    {
+      "id": "UI-COMP-21",
+      "type": "design_component",
+      "label": "UI-COMP-21",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "UI-COMP-22",
+      "type": "design_component",
+      "label": "UI-COMP-22",
+      "meta": {
+        "source": "ui_handoff_prompts.json"
+      }
+    },
+    {
+      "id": "client/src/components/ui/Toast.tsx",
+      "type": "client_file",
+      "label": "Toast.tsx"
+    },
+    {
+      "id": "/auth/welcome",
+      "type": "route",
+      "label": "/auth/welcome",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/auth/verify",
+      "type": "route",
+      "label": "/auth/verify",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/auth/setup",
+      "type": "route",
+      "label": "/auth/setup",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/app/dashboard",
+      "type": "route",
+      "label": "/app/dashboard",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/app/contacts",
+      "type": "route",
+      "label": "/app/contacts",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/app/search",
+      "type": "route",
+      "label": "/app/search",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/app/settings",
+      "type": "route",
+      "label": "/app/settings",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/app/group-settings/:id",
+      "type": "route",
+      "label": "/app/group-settings/:id",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/app/profile/:id",
+      "type": "route",
+      "label": "/app/profile/:id",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "/offline",
+      "type": "route",
+      "label": "/offline",
+      "meta": {
+        "source": "page_map.md",
+        "exists": true
+      }
+    },
+    {
+      "id": "server/src/modules/auth/__tests__/phone.util.test.ts",
+      "type": "test_file",
+      "label": "phone.util.test.ts"
+    },
+    {
+      "id": "server/src/modules/auth/__tests__/otp.service.test.ts",
+      "type": "test_file",
+      "label": "otp.service.test.ts"
+    },
+    {
+      "id": "server/src/modules/auth/__tests__/session.service.test.ts",
+      "type": "test_file",
+      "label": "session.service.test.ts"
+    },
+    {
+      "id": "server/src/modules/auth/__tests__/ttl.util.test.ts",
+      "type": "test_file",
+      "label": "ttl.util.test.ts"
+    },
+    {
+      "id": "server/src/sockets/__tests__/auth.middleware.test.ts",
+      "type": "test_file",
+      "label": "auth.middleware.test.ts"
+    },
+    {
+      "id": "server/src/sockets/__tests__/presence.service.test.ts",
+      "type": "test_file",
+      "label": "presence.service.test.ts"
+    },
+    {
+      "id": "server/src/modules/messages/__tests__/message.service.test.ts",
+      "type": "test_file",
+      "label": "message.service.test.ts"
+    },
+    {
+      "id": "server/src/modules/messages/__tests__/message.status.test.ts",
+      "type": "test_file",
+      "label": "message.status.test.ts"
+    },
+    {
+      "id": "server/src/modules/messages/__tests__/reply.forward.test.ts",
+      "type": "test_file",
+      "label": "reply.forward.test.ts"
+    },
+    {
+      "id": "server/src/modules/conversations/__tests__/conversation.service.test.ts",
+      "type": "test_file",
+      "label": "conversation.service.test.ts"
+    },
+    {
+      "id": "server/src/modules/conversations/__tests__/pin.test.ts",
+      "type": "test_file",
+      "label": "pin.test.ts"
+    },
+    {
+      "id": "server/src/modules/media/__tests__/media.service.test.ts",
+      "type": "test_file",
+      "label": "media.service.test.ts"
+    },
+    {
+      "id": "server/src/modules/push/__tests__/push.service.test.ts",
+      "type": "test_file",
+      "label": "push.service.test.ts"
+    },
+    {
+      "id": "server/src/modules/contacts/__tests__/contacts.service.test.ts",
+      "type": "test_file",
+      "label": "contacts.service.test.ts"
+    },
+    {
+      "id": "server/src/modules/search/__tests__/search.service.test.ts",
+      "type": "test_file",
+      "label": "search.service.test.ts"
+    }
+  ],
+  "edges": [
+    {
+      "from": "server/src/modules/auth/phone.util.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/auth/otp.store.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/auth/otp.service.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/auth/session.store.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/auth/session.service.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/auth/ttl.util.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/auth/auth.schemas.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/auth/auth.routes.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/users/users.routes.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/messages/message.service.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/messages/messages.routes.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/conversations/conversation.service.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/conversations/conversations.routes.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/sockets/index.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/sockets/auth.middleware.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/sockets/presence.service.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/sockets/message.handlers.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/media/media.service.ts",
+      "to": "FEAT-03",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/media/media.routes.ts",
+      "to": "FEAT-03",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/push/push.service.ts",
+      "to": "FEAT-04",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/push/push.routes.ts",
+      "to": "FEAT-04",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/contacts/contacts.service.ts",
+      "to": "FEAT-04",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/contacts/contacts.routes.ts",
+      "to": "FEAT-04",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/search/search.service.ts",
+      "to": "FEAT-04",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/modules/search/search.routes.ts",
+      "to": "FEAT-04",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/models/User.ts",
+      "to": "FEAT-01",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/models/Conversation.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "server/src/models/Message.ts",
+      "to": "FEAT-02",
+      "rel": "implements"
+    },
+    {
+      "from": "packages/shared/src/events.ts",
+      "to": "FEAT-02",
+      "rel": "defines"
+    },
+    {
+      "from": "packages/shared/src/events.ts",
+      "to": "FEAT-04",
+      "rel": "defines"
+    },
+    {
+      "from": "client/src/components/layout/AppShell.tsx",
+      "to": "UI-COMP-01",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/layout/SidebarNav.tsx",
+      "to": "UI-COMP-02",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/ChatListPanel.tsx",
+      "to": "UI-COMP-03",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/ChatWindow.tsx",
+      "to": "UI-COMP-04",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/ChatListPanel.tsx",
+      "to": "UI-COMP-05",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/ChatListPanel.tsx",
+      "to": "UI-COMP-06",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/ChatHeader.tsx",
+      "to": "UI-COMP-07",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/MessageList.tsx",
+      "to": "UI-COMP-08",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/MessageInput.tsx",
+      "to": "UI-COMP-09",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/MessageBubble.tsx",
+      "to": "UI-COMP-10",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/DateDivider.tsx",
+      "to": "UI-COMP-11",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/TypingIndicator.tsx",
+      "to": "UI-COMP-12",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/ReplyBar.tsx",
+      "to": "UI-COMP-13",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/ui/PrimaryButton.tsx",
+      "to": "UI-COMP-14",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/ui/OtpInput.tsx",
+      "to": "UI-COMP-15",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/ui/Fab.tsx",
+      "to": "UI-COMP-16",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/layout/BottomNav.tsx",
+      "to": "UI-COMP-17",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/ui/ToggleSwitch.tsx",
+      "to": "UI-COMP-18",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/chat/ChatListPanel.tsx",
+      "to": "UI-COMP-19",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/ui/Modal.tsx",
+      "to": "UI-COMP-20",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/ui/Modal.tsx",
+      "to": "UI-COMP-21",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/components/ui/Toast.tsx",
+      "to": "UI-COMP-22",
+      "rel": "implements"
+    },
+    {
+      "from": "client/src/app/auth/welcome/page.tsx",
+      "to": "/auth/welcome",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/auth/verify/page.tsx",
+      "to": "/auth/verify",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/auth/setup/page.tsx",
+      "to": "/auth/setup",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/app/dashboard/page.tsx",
+      "to": "/app/dashboard",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/app/contacts/page.tsx",
+      "to": "/app/contacts",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/app/search/page.tsx",
+      "to": "/app/search",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/app/settings/page.tsx",
+      "to": "/app/settings",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/app/group-settings/[id]/page.tsx",
+      "to": "/app/group-settings/:id",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/app/profile/[id]/page.tsx",
+      "to": "/app/profile/:id",
+      "rel": "renders"
+    },
+    {
+      "from": "client/src/app/offline/page.tsx",
+      "to": "/offline",
+      "rel": "renders"
+    },
+    {
+      "from": "server/src/modules/auth/__tests__/phone.util.test.ts",
+      "to": "server/src/modules/auth/phone.util.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/auth/__tests__/otp.service.test.ts",
+      "to": "server/src/modules/auth/otp.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/auth/__tests__/session.service.test.ts",
+      "to": "server/src/modules/auth/session.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/auth/__tests__/ttl.util.test.ts",
+      "to": "server/src/modules/auth/ttl.util.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/sockets/__tests__/auth.middleware.test.ts",
+      "to": "server/src/sockets/auth.middleware.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/sockets/__tests__/presence.service.test.ts",
+      "to": "server/src/sockets/presence.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/messages/__tests__/message.service.test.ts",
+      "to": "server/src/modules/messages/message.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/messages/__tests__/message.status.test.ts",
+      "to": "server/src/modules/messages/message.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/messages/__tests__/reply.forward.test.ts",
+      "to": "server/src/modules/messages/message.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/conversations/__tests__/conversation.service.test.ts",
+      "to": "server/src/modules/conversations/conversation.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/conversations/__tests__/pin.test.ts",
+      "to": "server/src/modules/conversations/conversation.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/media/__tests__/media.service.test.ts",
+      "to": "server/src/modules/media/media.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/push/__tests__/push.service.test.ts",
+      "to": "server/src/modules/push/push.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/contacts/__tests__/contacts.service.test.ts",
+      "to": "server/src/modules/contacts/contacts.service.ts",
+      "rel": "tests"
+    },
+    {
+      "from": "server/src/modules/search/__tests__/search.service.test.ts",
+      "to": "server/src/modules/search/search.service.ts",
+      "rel": "tests"
+    }
+  ]
+}
